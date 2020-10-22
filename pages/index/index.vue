@@ -28,6 +28,7 @@
 				<view class="recharge">
 					{{recharge}} 充值>
 				</view>
+				<view @click="chooseImage">热门</view>
 				<view class="submit">送给他</view>
 			</view>
 		</view>
@@ -92,6 +93,17 @@
 			handleGoodsItem(data){
 				this.goodsItemActive = data.id
 				this.recharge = data.price
+			},
+			//调用摄像头或选择文件上传
+			chooseImage() {
+				uni.chooseImage({
+					count: 6, //默认9
+					sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+					sourceType: ['album','camera'], //从相册选择、摄像头
+					success: function(res) {
+						console.log(JSON.stringify(res.tempFilePaths));
+					}
+				});
 			}
 		}
 	}
