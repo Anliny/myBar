@@ -14,5 +14,6 @@
 
 <style>
 	/*每个页面公共css */
-	@import "/static/style.css"
+	@import url("./static/style.css");
+
 </style>

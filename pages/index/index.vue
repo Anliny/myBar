@@ -1,7 +1,7 @@
 <template>
 	<view class="content" :style="{background:`url(${BGUrl})`}">
 		<view class="text-area">
-			<text class="title">{{title}}</text>
+			<text class="title fontSize">{{title}}</text>
 		</view>
 	</view>
 </template>
@@ -11,19 +11,16 @@
 		data() {
 			return {
 				title: 'Hello',
-				BGUrl: '/static/images/bg.png'
+				BGUrl: '/static/images/bg.jpg'
 			}
 		},
-		onLoad() {
-
-		},
-		methods: {
-
-		}
+		onLoad() {},
+		methods: {}
 	}
 </script>
 
 <style>
+	/* @import url("../../static/style.css"); */
 	.content {
 		display: flex;
 		flex-direction: column;
@@ -33,15 +30,6 @@
 	}
 	
 
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
-
 	.text-area {
 		display: flex;
 		justify-content: center;
@@ -49,6 +37,6 @@
 
 	.title {
 		font-size: 36rpx;
-		color: #8f8f94;
+		/* color: #8f8f94; */
 	}
 </style>
