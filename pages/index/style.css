@@ -1,24 +1,31 @@
-.content {
+	.content {
 		height: 100%;
+		background-size:750upx;
 	}
 	.header{
-		height: 60px;
+		height: 180upx;
 		width: 100%;
 		background-color: rgba(102,102,102,.4);
-		border-radius: 30px;
-		padding: 5px;
+		border-radius: 90upx;
+		padding: 10upx;
 		box-sizing: border-box;
 		display: flex;
+		position: absolute;
 	}
 	.logo{
-		height: 50px;
-		width: 50px;
+		height: 160upx;
+		width: 160upx;
 		border-radius: 50%;
-		background-color: #007AFF;
+		/* background-color: #007AFF; */
+	}
+	.logo image{
+		width: 100%;
+		height: 100%;
 	}
 	.nameWapper{
 		flex: 1;
-		padding: 0 5px;
+		height: 80upx;
+		padding: 40upx 0;
 	}
 	.nameWapper .title{
 		font-size: 16px;
@@ -29,24 +36,27 @@
 		color: #F1F1F1;
 	}
 	.avatar{
-		width: 120px;
-		height: 40px;
-		margin: 5px 0;
-		/* background-color: #4CD964; */
-		
+		width: 279upx;
+		height: 93upx;
+		margin: 33.5upx 0;		
 	}
 	.avatar .item{
-		width: 40px;
-		height: 40px;
+		width: 93upx;
+		height: 93upx;
 		border-radius: 50%;
 		float: right;
-		margin-right: -2px;
-		box-shadow: 0 0 3px #000;
+		margin-right: -10upx;
 	}
+	.avatar .item image{width: 100%;height: 100%;}
 	.textWapper{
 		padding: 5px 20px;
-		margin-top: 20px;
+		margin-top: 76upx;
+		width: 437upx;
+		height: 139upx;
+		position: absolute;
+		top: 182upx;
 	}
+	.textWapper image{width: 100%;height: 100%;}
 	.textWapper .icon{
 		height: 20px;
 		width: 50px;
@@ -59,57 +69,108 @@
 		font-size: 30px;
 		color: #fff;
 	}
-	.bottomWapper{
-		background-color: #333333;
-		padding: 20px;
-		width: 100%;
-		height: 280px;
-		position: fixed;
+	.chatContanner{
+		padding: 20upx;
+		background-color: #55ff7f;
 		box-sizing: border-box;
+		height: calc(100% - 386upx);
+		overflow-y:auto;
+	}
+	
+	.chatContanner .chatItem {
+		background-color: rgba(0,0,0,.3);
+		height: 86.67upx;
+		border-radius: 86.67upx;
+		padding:0 20upx;
+		margin-bottom: 10upx;
+		display: inline-flex;
+		max-width: 100%;
+		word-wrap:break-word; 
+		word-break:break-all; 
+	}
+	.chatContanner .chatItem .tableNumber{
+		height: 67.33upx;
+		border-radius: 67.33upx;
+		background-color: #490e38c7;
+		display: inline-block;
+		padding: 0 10upx;
+		font-size: 28upx;
+		font-weight: bolder;
+		line-height: 67.33upx;
+		color: #bf72ac;
+		margin:5upx;
+	}
+	.chatContanner .chatItem .userIcon {
+		height: 86.67upx;
+		width: 86.67upx;
+		
+	}
+	.chatContanner .chatItem .text{
+		font-size: 28upx;
+		font-weight: bolder;
+		color: #FFFFFF;
+		line-height: 86.67upx;
+	}
+	.empetTop{
+		height: 182upx;
+	}
+	.empetBottom{
+		height:204upx;
+	}
+	.bottomWapper{
+		position: absolute;
 		bottom: 0;
+		height: 204upx;
+		/* background-color: #55aaff; */
+		padding: 56upx 40px;
+		width: 100%;
+		box-sizing: border-box;
 	}
-	.bottomWapper .goodsWapper{
-		height: 200px;
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
+	.bottomWapper .line{
+		width:calc(100% - 40upx);
+		left: 20upx;
+		height: 2upx;
+		background-color: #F1F1F1;
+		position: absolute;
+		top: 0;
 	}
-	.bottomWapper .goodsWapper .goodsItem{
-		flex: 1;
-		width: 25%;
-		min-width: 25%;
-		max-width: 25%;
-		text-align: center;
-	}
-	.bottomWapper .goodsWapper .icon{
-		width: 50px;
-		height: 50px;
-		border-radius: 3px;
+	.bottomWapper .chatWapper{
+		height: 74upx;
+		width: 650upx;
+		position: absolute;
+		left: 0;
+		right: 0;
 		margin: auto;
+		/* background-color: #00ffff; */
+		/* display: flex; */
 	}
-	.iconHover{
-		background-color: #aaffff;
-	}
-	.bottomWapper .goodsWapper .name{
-		color: #dedede;
-		font-size: 14px;
-	}
-	.bottomWapper .goodsWapper .price{
-		color: #dedede;
-		font-size: 14px;
-	}
-	.payment{}
-	.payment .recharge{
-		background-color: #C0C0C0;
-		width: 120px;
-		height: 25px;
-		border-radius: 20px;
+	.bottomWapper .chatWapper .chatInput{
+		width: 400upx;
+		box-sizing: border-box;
+		height: 74upx;
+		border-radius: 74upx;
+		padding: 10upx;
+		color: #fff;
+		background-color: rgba(0,0,0,.3);
 		float: left;
 	}
-	.payment .submit{
-		width: 80px;
-		height: 25px;
-		background-color: #aa00ff;
+	.bottomWapper .chatWapper .submit{
+		width: 100upx;
+		height: 74upx;
+		text-align: center;
 		float: right;
-		border-radius: 20px;
+		background-color: #5555FF;
+		border-radius: 74upx;
+		line-height: 74upx;
+		color: #fff;
+		
 	}
+	.bottomWapper .chatWapper .gave{
+		width: 74upx;
+		height: 74upx;
+		border-radius: 50%;
+		float: right;
+		margin-right: 10upx;
+		background-color: #674892;
+	}
+	

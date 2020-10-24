@@ -1,0 +1,127 @@
+page,.content{
+	height: 100%;
+}
+.swiper-box{
+	background-color: rgba(0,0,0,.3);
+	/* background-color: #BF72AC; */
+	height: 560upx;
+}
+.swiper-item{
+	display: flex;
+	 justify-content: space-between;
+	flex-direction: row;
+	flex-wrap: wrap;
+	padding: 10upx;
+}
+.swiper-item .avatar{
+	width: 160upx;
+	height: 160upx;
+	margin: 10upx;
+	position: relative;
+	
+}
+.swiper-item .avatar image{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+.swiper-item .avatar .shadow{
+	box-shadow: 0 0 40upx #fa12c1;
+}
+.swiper-item .avatar .number{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 160upx;
+	height: 160upx;
+	background-color: rgba(0,0,0,.3);
+	font-size: 44upx;
+	text-align: center;
+	line-height: 160upx;
+	font-weight: bolder;
+	border-radius: 50%;
+	z-index: 10;
+	color: #fff;
+}
+
+.table{
+	position: absolute;
+	height: 515upx;
+	width: 100%;
+	background-color: #5555FF;
+	bottom: 0;
+}
+.table .tableLeft{
+	width: 490upx;
+	height: 515upx;
+	overflow-y: auto;
+	background-color: #BF72AC;
+	float: left;
+}
+.table .tableLeft .tableItem{
+	width: 480upx;
+	height: 460upx;
+	border-radius: 40upx;
+	background-color: rgba(45,12,34,.3);
+	margin-bottom: 10upx;
+	background-image: url(images/tableBG.png);
+	background-size: 318upx 318upx;
+	background-repeat: no-repeat;
+	background-position: center;
+	position: relative;
+}
+.table .tableLeft .tableItem .user{
+	width: 120upx;
+	height: 120upx;
+	border-radius: 50%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}
+.table .tableLeft .tableItem .user1{
+	transform: translate(150upx);
+}
+.table .tableLeft .tableItem .user2{
+	transform: translate(-150upx);
+}
+.table .tableLeft .tableItem .user3{
+	transform: translateY(-150upx);
+}
+.table .tableLeft .tableItem .shadow{
+	box-shadow: 0 0 40upx #fa12c1;
+}
+.table .tableLeft .tableItem .number{
+	position: absolute;
+	font-size: 44upx;
+	text-align: center;
+	bottom: 10upx;
+	font-weight: bold;
+	width: 100%;
+	color: #BF72AC;
+}
+.table .tableRight{
+	width: 260upx;
+	height: 100%;
+	float: right;
+	overflow-y: auto;
+	background-color: #55FF7F;
+}
+.table .tableRight::-webkit-scrollbar,.table .tableLeft::-webkit-scrollbar {
+	display: none;
+}
+
+.table .tableRight .tableItem{
+	width: 250upx;
+	height: 250upx;
+	background-color: rgba(56,13,134,.3);
+	border-radius: 100upx;
+	margin: auto;
+	margin-bottom: 10upx;
+	background-image: url(images/tableBG.png);
+	background-size: 150upx 150upx;
+	background-repeat: no-repeat;
+	background-position: center;
+}

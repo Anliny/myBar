@@ -1,37 +1,45 @@
 <template>
-	<view class="content" :style="{background:`url(${BGUrl})`}">
+	<view class="content" :style="{background:`url(${BGUrl})`}" style="background-size: 750upx;">
 		<view class="header">
-			<view class="logo"></view>
+			<view class="logo">
+				<image :src="logo"   mode="scaleToFill"></image>
+			</view>
 			<view class="nameWapper">
 				<view class="title">上海双人舞酒吧</view>
 				<view class="number">当晚人数：769</view>
 			</view>
 			<view class="avatar">
-				<view class="item" style="background-color: #aa5500;"></view>
-				<view class="item" style="background-color: #00aa7f;"></view>
-				<view class="item" style="background-color: #aa55ff;"></view>
+				<view class="item" v-for="(item,index) in avatarList" :key="index">
+					<image :src="item" mode="scaleToFill"></image>
+				</view>
 			</view>
 		</view>
 		<view class="textWapper">
 			<view class="icon">Live</view>
 			<view class="text">Current Songs</view>
 		</view>
-		<view class="bottomWapper">
-			<view class="goodsWapper" >
-				<view class="goodsItem" @click="handleGoodsItem(item)" v-for="item in bottomList" :key="item.id">
-					<view class="icon" :class="[item.id == goodsItemActive ? 'iconHover' : '']">{{item.icon}}</view>
-					<view class="name">{{item.name}}</view>
-					<view class="price">{{item.price}}</view>
+		<view class="empetTop"></view>
+		<view class="chatContanner">
+			<view style="width: 100%;max-width: 100%;" v-for="item in chatList" :key="item.id">
+				<view class="chatItem" >
+					<view class="tableNumber" v-if="item.tableNumber">{{item.tableNumber}}</view>
+					<image class="userIcon" :src="item.userIcon" mode="scaleToFill"></image>
+					<view class="text">{{item.text}}</view>
 				</view>
 			</view>
-			<view class="payment">
-				<view class="recharge">
-					{{recharge}} 充值>
-				</view>
-				<view @click="chooseImage">热门</view>
-				<view class="submit">送给他</view>
+			
+		</view>
+		<view class="empetBottom"></view>
+		<view class="bottomWapper">
+			<view class="line"></view>
+			<view class="chatWapper">
+				<input type="text" class="chatInput" @blur="getChat" :value="inputValue" />
+				<view class="submit" @click="handleSubmit">发送</view>
+				<!-- <view class="gave"></view> -->
+				<image class="gave" src="./images/goodsBtn.png" @click="handleGoods" mode="scaleToFill"></image>
 			</view>
 		</view>
+			
 	</view>
 </template>
 
@@ -42,57 +50,65 @@
 				goodsItemActive:null,
 				recharge:0,
 				BGUrl: '/static/images/bg.jpg',
-				bottomList:[
+				logo: '/static/images/logo.png',
+				avatarList:['/static/images/avatar1.png','/static/images/avatar2.png','/static/images/avatar3.png'],
+				tips:'/static/images/tips.png',
+				inputValue:'',
+				chatList:[
 					{
 						id:1,
-						icon: '111',
-						name:'四叶草',
-						price: 60
+						tableNumber:'799',
+						userIcon:require('./images/user.png'),
+						text:'真好听',
 					},{
 						id:2,
-						icon: '111',
-						name:'四叶草',
-						price: 123
+						tableNumber:'99',
+						userIcon:require('./images/user.png'),
+						text:'真好听',
 					},{
 						id:3,
-						icon: '111',
-						name:'四叶草',
-						price: 76
-					},{
-						id:6,
-						icon: '111',
-						name:'四叶草',
-						price: 79
-					},{
-						id:4,
-						icon: '111',
-						name:'四叶草',
-						price: 80
-					},{
-						id:5,
-						icon: '111',
-						name:'四叶草',
-						price: 123
-					},{
-						id:7,
-						icon: '111',
-						name:'四叶草',
-						price: 45
-					},{
-						id:8,
-						icon: '111',
-						name:'四叶草',
-						price: 79
+						tableNumber:'',
+						userIcon:require('./images/user.png'),
+						text:'真好听',
 					}
 				]
 			}
 		},
-		onLoad() {},
+		onLoad:function (options) {
+			 setTimeout(function () {
+				 console.log('start pulldown');
+			 }, 1000);
+			uni.startPullDownRefresh();
+		},
+		 onPullDownRefresh() {
+		        //监听下拉刷新动作的执行方法，每次手动下拉刷新都会执行一次
+		        console.log('refresh')
+		        setTimeout(function () {
+		            uni.stopPullDownRefresh();  //停止下拉刷新动画
+		        }, 1000);
+		    },
+
 		methods: {
-			// 点击商品
-			handleGoodsItem(data){
-				this.goodsItemActive = data.id
-				this.recharge = data.price
+			// 获取文本框内容
+			getChat(event){
+				this.inputValue = event.target.value
+			},
+			// 点击发送
+			handleSubmit(){
+				this.chatList = [
+					...this.chatList,
+					{
+						id:this.chatList.length+1,
+						tableNumber:'799',
+						userIcon:require('./images/user.png'),
+						text:this.inputValue,
+					}
+				]
+				this.inputValue = ""
+			},
+			// 跳转商品购买 (这种跳转方式在H5上只能用相对路径)
+			handleGoods(){
+				uni.navigateTo({url:'../goods/index'});
 			},
 			//调用摄像头或选择文件上传
 			chooseImage() {
