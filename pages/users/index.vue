@@ -13,20 +13,33 @@
 		    </swiper>
 		</uni-swiper-dot>
 		
+		<view class="textWapper">
+			<view class="icon">BEEHIVE</view>
+			<view class="text">Current Songs</view>
+		</view>
+		<view class="bottles">
+			<image src="./images/bottles.png" mode="scaleToFill"></image>
+		</view>
+		
 		<view class="table">
 			<view class="tableLeft">
-				<view class="tableItem">
-					<image class="user user1" src="./images/user1.png" mode="scaleToFill"></image>
-					<image class="user user2" src="./images/user2.png" mode="scaleToFill"></image>
-					<image class="user shadow user3" src="./images/user1.png" mode="scaleToFill"></image>
-					<view class="number">799</view>
+				<view class="tableItem" v-for="table in tableList.tableLeft" :key= "table.id">
+					<image 
+						v-for="(user,index) in table.users" 
+						:key="user.id" 
+						:class="[`user${index+1}`,{shadow:user.isShadow}]" 
+						class="user" 
+						:src="user.userUrl" 
+						mode="scaleToFill">
+					</image>
+					<view class="number">{{table.tabelNumber}}</view>
 				</view>
-				<view class="tableItem"></view>
 			</view>
 			<view class="tableRight">
-				<view class="tableItem"></view>
-				<view class="tableItem"></view>
-				<view class="tableItem"></view>
+				<view class="tableItem" v-for="table in tableList.tableRight" :key= "table.id">
+					<view class="number">{{table.number}}</view>
+					<image class="seat redius" :class="{shadow:table.isShadow}" :src="table.tabelUrl" mode="scaleToFill"></image>
+				</view>
 			</view>
 		</view>
 	</view>
@@ -34,24 +47,29 @@
 
 <script>
 	import uniSwiperDot from "@/components/uni-swiper-dot/uni-swiper-dot.vue"
-    import {userData} from "./mock.js"
+    import {userData,tableList} from "./mock.js"
 	export default {
 		components: {uniSwiperDot},
 		data() {
 			return {
-				
 				BGUrl: '/static/images/bg.jpg',
 				info: userData,
+				tableList:tableList,
 				current: 0,
 				mode: 'round',
-				
+			}
+		},
+		computed:{
+			userClass () {
+				console.log(user)
+				return user1
 			}
 		},
 		onLoad() {},
 		methods: {
 			change(e) {
-			            this.current = e.detail.current;
-			        }
+				this.current = e.detail.current;
+			}
 		}
 	}
 </script>

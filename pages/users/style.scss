@@ -3,7 +3,6 @@ page,.content{
 }
 .swiper-box{
 	background-color: rgba(0,0,0,.3);
-	/* background-color: #BF72AC; */
 	height: 560upx;
 }
 .swiper-item{
@@ -48,21 +47,19 @@ page,.content{
 	position: absolute;
 	height: 515upx;
 	width: 100%;
-	background-color: #5555FF;
 	bottom: 0;
 }
 .table .tableLeft{
 	width: 490upx;
 	height: 515upx;
 	overflow-y: auto;
-	background-color: #BF72AC;
 	float: left;
 }
 .table .tableLeft .tableItem{
 	width: 480upx;
 	height: 460upx;
-	border-radius: 40upx;
-	background-color: rgba(45,12,34,.3);
+	border-radius: 140upx;
+	background-color: rgb(191 114 172 / 30%);
 	margin-bottom: 10upx;
 	background-image: url(images/tableBG.png);
 	background-size: 318upx 318upx;
@@ -82,15 +79,24 @@ page,.content{
 	margin: auto;
 }
 .table .tableLeft .tableItem .user1{
-	transform: translate(150upx);
+	transform: translate(-150upx);
 }
 .table .tableLeft .tableItem .user2{
-	transform: translate(-150upx);
+	transform: translate(-100upx,-100upx);
 }
 .table .tableLeft .tableItem .user3{
 	transform: translateY(-150upx);
 }
-.table .tableLeft .tableItem .shadow{
+.table .tableLeft .tableItem .user4{
+	transform: translate(100upx,-100upx);
+}
+.table .tableLeft .tableItem .user5{
+	transform: translate(150upx);
+}
+.table .tableLeft .tableItem .user6{
+	transform: translate(-100upx,-100upx);
+}
+.shadow{
 	box-shadow: 0 0 40upx #fa12c1;
 }
 .table .tableLeft .tableItem .number{
@@ -107,7 +113,6 @@ page,.content{
 	height: 100%;
 	float: right;
 	overflow-y: auto;
-	background-color: #55FF7F;
 }
 .table .tableRight::-webkit-scrollbar,.table .tableLeft::-webkit-scrollbar {
 	display: none;
@@ -120,8 +125,63 @@ page,.content{
 	border-radius: 100upx;
 	margin: auto;
 	margin-bottom: 10upx;
-	background-image: url(images/tableBG.png);
-	background-size: 150upx 150upx;
-	background-repeat: no-repeat;
-	background-position: center;
+	position: relative;
+}
+.table .tableRight .tableItem .seat{
+	width: 120upx;
+	height: 120upx;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+.table .tableRight .tableItem .number{
+	position: absolute;
+	font-size: 36upx;
+	text-align: center;
+	bottom: 5upx;
+	font-weight: bold;
+	width: 100%;
+	color: #BF72AC;
+}
+.redius{
+	border-radius: 50%;
+}
+
+.textWapper{
+	padding: 5px 20px;
+	margin-top: 76upx;
+	width: 437upx;
+	height: 139upx;
+	// position: absolute;
+	top: 182upx;
+}
+.textWapper image{width: 100%;height: 100%;}
+.textWapper .icon{
+	height: 20px;
+	padding: 10upx 20upx;
+	text-align: center;
+	line-height: 20px;
+	display: inline-block;
+	background-color: #5555ff;
+	color: #ffe109;
+	transform: skewX(-20deg);
+}
+.textWapper .text{
+	font-size: 30px;
+	color: #fff;
+}
+
+.bottles{
+	width: 300upx;
+	height: 440upx;
+	position: absolute;
+	top:560upx;
+	right: 50upx;
+}
+.bottles image{
+	width: 100%;
+	height: 100%;
 }

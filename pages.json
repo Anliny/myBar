@@ -27,6 +27,11 @@
 			"style": {
 				"navigationBarTitleText": "users"
 			}
+		},{
+			"path": "pages/photos/index",
+			"style": {
+				"navigationBarTitleText": "photos"
+			}
 		}
 	],
 	"globalStyle": {

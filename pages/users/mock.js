@@ -196,5 +196,95 @@ const userData = [
 	},
 ]
 
+const tableList = {
+	tableRight:[
+		{
+			id:1,
+			tabelUrl:require('./images/tableBG.png'),
+			number:234,
+			isShadow:false
+		},{
+			id:2,
+			tabelUrl:require('./images/tableBG.png'),
+			number:16,
+			isShadow:true
+		},{
+			id:3,
+			tabelUrl:require('./images/tableBG.png'),
+			number:16,
+			isShadow:true
+		},{
+			id:4,
+			tabelUrl:require('./images/tableBG.png'),
+			number:16,
+			isShadow:true
+		}
+	],
+	tableLeft:[
+		{
+			id:1,
+			tabelNumber:712,
+			tabelUrl:require('./images/tableBG.png'),
+			users:[
+				{
+					userId:1,
+					userUrl:require('./images/user1.png'),
+					isShadow:false
+				},{
+					userId:2,
+					userUrl:require('./images/user2.png'),
+					isShadow:true
+				},{
+					userId:3,
+					userUrl:require('./images/user1.png'),
+					isShadow:true
+				},{
+					userId:4,
+					userUrl:require('./images/user2.png'),
+					isShadow:false
+				}
+			]
+		},{
+			id:2,
+			tabelNumber:58,
+			tabelUrl:require('./images/tableBG.png'),
+			users:[
+				{
+					userId:1,
+					userUrl:require('./images/user1.png'),
+					isShadow:false
+				},{
+					userId:2,
+					userUrl:require('./images/user2.png'),
+					isShadow:true
+				},{
+					userId:3,
+					userUrl:require('./images/user1.png'),
+					isShadow:true
+				}
+			]
+		},{
+			id:3,
+			tabelNumber:699,
+			tabelUrl:require('./images/tableBG.png'),
+			users:[
+				{
+					userId:1,
+					userUrl:require('./images/user1.png'),
+					isShadow:false
+				},{
+					userId:2,
+					userUrl:require('./images/user2.png'),
+					isShadow:true
+				},{
+					userId:3,
+					userUrl:require('./images/user1.png'),
+					isShadow:true
+				}
+			]
+		}
+		
+	]
+}
 
-export { userData }
+export { userData,tableList }

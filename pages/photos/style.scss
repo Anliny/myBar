@@ -1,0 +1,96 @@
+	.content {
+		height: 100%;
+		background-size:750upx;
+	}
+	.header{
+		height: 180upx;
+		width: 100%;
+		background-color: rgba(102,102,102,.4);
+		border-radius: 90upx;
+		padding: 10upx;
+		box-sizing: border-box;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.goBack{
+		height: 110upx;
+		width: 336upx;
+		font-size: 68upx;
+		font-weight: bold;
+		line-height: 110upx;
+		color: #cacaca;
+		
+	}
+	.goBack .icon{
+		width: 64upx;
+		height: 64upx;
+		margin-right: 20upx;
+		vertical-align: middle;
+	}
+	
+	.logo image{
+		width: 100%;
+		height: 100%;
+	}
+	.nameWapper{
+		flex: 1;
+		height: 80upx;
+		padding: 40upx 0;
+	}
+	.nameWapper .title{
+		font-size: 16px;
+		color: #fff;
+	}
+	.nameWapper .number{
+		font-size: 12px;
+		color: #F1F1F1;
+	}
+	.avatar{
+		width: 430upx;
+		height: 160upx;	
+		padding-right: 10px;
+	}
+	.avatar .item{
+		width: 160upx;
+		height: 160upx;
+		border-radius: 50%;
+		float: right;
+		margin-right: -32upx;
+	}
+	.avatar .item image{width: 100%;height: 100%;}
+	.textWapper{
+		padding: 5px 20px;
+		margin-top: 76upx;
+		width: 437upx;
+		height: 139upx;
+	}
+	.textWapper image{width: 100%;height: 100%;}
+	.textWapper .icon{
+		height: 20px;
+		width: 50px;
+		text-align: center;
+		line-height: 20px;
+		background-color: #5555ff;
+		transform: skewX(-20deg);
+	}
+	.textWapper .text{
+		font-size: 30px;
+		color: #fff;
+	}
+	
+	.swiper-box{
+		background-color: rgba(0,0,0,.3);
+		height: 1982upx;
+	}
+	.swiper-item{
+		width: 928upx;
+		height: 1982upx;
+		background-color: #0086B3;
+		display: flex;
+		justify-content: space-between;
+		flex-direction: row;
+		flex-wrap: wrap;
+		padding: 10upx;
+	}
+	
