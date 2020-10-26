@@ -19,15 +19,19 @@
 			<view class="text">Current Songs</view>
 		</view>
 		<view class="empetTop"></view>
-		<view class="chatContanner">
-			<view style="width: 100%;max-width: 100%;" v-for="item in chatList" :key="item.id">
-				<view class="chatItem" >
-					<view class="tableNumber" v-if="item.tableNumber">{{item.tableNumber}}</view>
-					<image class="userIcon" :src="item.userIcon" mode="scaleToFill"></image>
-					<view class="text">{{item.text}}</view>
-				</view>
+		<view class="chatContanner" style="position: relative;">
+			<view class="chatView" style="">
+				<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scrolltoupper="upper" @scrolltolower="lower"
+				                @scroll="scroll">
+					<view  v-for="item in chatList" :key="item.id" style="margin-bottom: 10upx;">
+							<view class="chatItem">
+								<view class="tableNumber" v-if="item.tableNumber">{{item.tableNumber}}</view>
+								<image class="userIcon" :src="item.userIcon" mode="scaleToFill"></image>
+								<view class="text">{{item.text}}</view>
+							</view>
+					</view>
+				 </scroll-view>
 			</view>
-			
 		</view>
 		<view class="empetBottom"></view>
 		<view class="bottomWapper">
@@ -35,7 +39,6 @@
 			<view class="chatWapper">
 				<input type="text" class="chatInput" @blur="getChat" :value="inputValue" />
 				<view class="submit" @click="handleSubmit">发送</view>
-				<!-- <view class="gave"></view> -->
 				<image class="gave" src="./images/goodsBtn.png" @click="handleGoods" mode="scaleToFill"></image>
 			</view>
 		</view>
@@ -47,8 +50,12 @@
 	export default {
 		data() {
 			return {
+				scrollTop:0,
 				goodsItemActive:null,
 				recharge:0,
+				 old: {
+					scrollTop: 0
+				},
 				BGUrl: '/static/images/bg.jpg',
 				logo: '/static/images/logo.png',
 				avatarList:['/static/images/avatar1.png','/static/images/avatar2.png','/static/images/avatar3.png'],
@@ -59,7 +66,7 @@
 						id:1,
 						tableNumber:'799',
 						userIcon:require('./images/user.png'),
-						text:'真好听',
+						text:'真好听你撒范德萨范德萨你懂撒范德萨范德萨发，是否你懂撒范德萨发生的三废士大夫的萨芬你撒范德萨发撒范德萨发',
 					},{
 						id:2,
 						tableNumber:'99',
@@ -89,6 +96,17 @@
 		    },
 
 		methods: {
+			 upper: function(e) {
+				console.log(e)
+			},
+			lower: function(e) {
+				console.log(e)
+			},
+			  scroll: function(e) {
+			            console.log(e)
+			            this.old.scrollTop = e.detail.scrollTop
+			        },
+			
 			// 获取文本框内容
 			getChat(event){
 				this.inputValue = event.target.value

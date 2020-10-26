@@ -71,22 +71,32 @@
 	}
 	.chatContanner{
 		padding: 20upx;
-		background-color: #55ff7f;
 		box-sizing: border-box;
 		height: calc(100% - 386upx);
+		padding-top:244upx;
 		overflow-y:auto;
 	}
+	.chatContanner .chatView{
+		/* width: 100%; */
+		/* height: calc(100% - 244upx); */
+		position: absolute;
+		bottom: 0;
+	}
 	
+	.scroll-Y{
+		max-height: 560upx;
+	}
 	.chatContanner .chatItem {
 		background-color: rgba(0,0,0,.3);
-		height: 86.67upx;
 		border-radius: 86.67upx;
 		padding:0 20upx;
 		margin-bottom: 10upx;
 		display: inline-flex;
-		max-width: 100%;
 		word-wrap:break-word; 
 		word-break:break-all; 
+	}
+	.chatContanner .chatItem .userHeader{
+		
 	}
 	.chatContanner .chatItem .tableNumber{
 		height: 67.33upx;
@@ -109,7 +119,8 @@
 		font-size: 28upx;
 		font-weight: bolder;
 		color: #FFFFFF;
-		line-height: 86.67upx;
+		line-height: 40upx;
+		flex: 1;
 	}
 	.empetTop{
 		height: 182upx;

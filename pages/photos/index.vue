@@ -13,16 +13,12 @@
 			</view>
 		</view>
 		<uni-swiper-dot :info="info" :current="current" field="content" :mode="mode">
-		    <swiper class="swiper-box" @change="change">
-		        <swiper-item v-for="(item ,index) in info" :key="index">
-		            <view class="swiper-item" :style="{background:`#f5${index}`}">{{item}}</view>
+		    <swiper class="swiper-box1" @change="change" style="width: 100%;">
+		        <swiper-item class="swiper-item"  v-for="(item ,index) in info" :key="index">
+		            <view class="swiper-item-container" :style="{background:`#f5${index}`}">{{item}}</view>
 		        </swiper-item>
 		    </swiper>
 		</uni-swiper-dot>
-		<!-- <view class="textWapper">
-			<image :src="tips" mode="scaleToFill"></image>
-		</view> -->
-		
 	</view>
 </template>
 
@@ -58,4 +54,7 @@
 <style>
 	/*每个页面公共css */
 	@import url("./style.scss");
+	.swiper-box1 .uni-swiper-slide-frame{
+		width: 84% !important;
+	}
 </style>
