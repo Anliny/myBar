@@ -32,6 +32,11 @@
 			"style": {
 				"navigationBarTitleText": "photos"
 			}
+		},{
+			"path": "pages/share/index",
+			"style": {
+				"navigationBarTitleText": "photos"
+			}
 		}
 	],
 	"globalStyle": {

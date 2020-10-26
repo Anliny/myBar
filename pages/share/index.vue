@@ -3,53 +3,26 @@
 		<view class="header">
 			<view class="goBack">
 				<image class="icon" src="./images/left.png" mode="scaleToFill"></image>
-				回现场
 			</view>
-			
-			<view class="avatar">
-				<view class="item" v-for="(item,index) in avatarList" :key="index">
-					<image :src="item" mode="scaleToFill"></image>
-				</view>
+			<view class="avatarWapper">
+				<image class="avatar" :src="avatarList[0]" mode="scaleToFill"></image>
+				<view class="name">Tonight</view>
+				<image class="avatar" :src="avatarList[1]" mode="scaleToFill"></image>
 			</view>
 		</view>
-		<!-- <uni-swiper-dot :info="info" :current="current" field="content" :mode="mode">
-		    <swiper class="swiper-box1" @change="change" style="width: 100%;">
-		        <swiper-item class="swiper-item"  v-for="(item ,index) in info" :key="index">
-		            <view class="swiper-item-container" :style="{background:`#f5${index}`}">{{item}}</view>
-		        </swiper-item>
-		    </swiper>
-		</uni-swiper-dot> -->
-		<!-- <goodsSwiper :datas="info" :config="config" @change="swiperChange" @tapFun="tapFun"></goodsSwiper> -->
-		<!-- <spaceSwiper></spaceSwiper> -->
+		
+		
+		
 		<swiper :loop="false" class="imageContainer" previous-margin="45rpx" next-margin="45rpx" >
 			<swiper-item class="swiperitem" :style="{backgroundImage:'url('+item+')'}" v-for="(item,index) in imgList" :key="index">
-				<!-- <image class="itemImg" :src="item" lazy-load></image> -->
 				<view class="textWapper">
 					<view class="icon">Live</view>
 					<view class="text">Current Songs</view>
 				</view>
-				<view class="chatContanner">
-					<view class="chatView" style="">
-						<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scrolltoupper="upper" @scrolltolower="lower"
-						                @scroll="scroll">
-							<view  v-for="item in chatList" :key="item.id" style="margin-bottom: 10upx;">
-									<view class="chatItem">
-										<view class="tableNumber" v-if="item.tableNumber">{{item.tableNumber}}</view>
-										<image class="userIcon" :src="item.userIcon" mode="scaleToFill"></image>
-										<view class="text">{{item.text}}</view>
-									</view>
-							</view>
-						 </scroll-view>
-					</view>
+				<view class="shareBtn">
+					<view class="icon">已将微信发送给你</view>
 				</view>
-				<view class="bottomWapper">
-					<view class="line"></view>
-					<view class="chatWapper">
-						<input type="text" class="chatInput" @blur="getChat" :value="inputValue" />
-						<view class="submit" @click="handleSubmit">发送</view>
-						<image class="gave" src="./images/goodsBtn.png" @click="handleGoods" mode="scaleToFill"></image>
-					</view>
-				</view>
+				<image class="gift" src="./images/gift.png" mode="scaleToFill"></image>
 			</swiper-item>
 		</swiper>
 	</view>
@@ -58,13 +31,9 @@
 <script>
 	import FontAwesome from '@/components/Am-FontAwesome/index.vue'
 	import {userData} from "../users/mock.js"
-	import goodsSwiper from "@/components/pyh-goodsSwiper/pyh-goodsSwiper.vue"
-	import spaceSwiper from '@/components/alexbai-spaceSwiper/space-swiper.vue'
 
 	export default {
-		components: {
-		    goodsSwiper,spaceSwiper
-		},
+		components: {},
 		data() {
 			return {
 				scrollTop:0,
@@ -80,7 +49,7 @@
 				mode: 'round',
 				BGUrl: '/static/images/bg.jpg',
 				logo: '/static/images/logo.png',
-				avatarList:['/static/images/avatar1.png','/static/images/avatar2.png','/static/images/avatar3.png'],
+				avatarList:['/static/images/avatar1.png','/static/images/avatar2.png'],
 				tips:'/static/images/tips.png',
 				imgList: [
 					'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3687173686,831911132&fm=26&gp=0.jpg',
@@ -154,7 +123,7 @@
 	.imageContainer {
 		width: 750rpx;
 		margin-top: 10rpx;
-		height: calc(100% - 200rpx);
+		height: calc(100% - 300rpx);
 		
 	}
 	

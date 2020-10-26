@@ -51,9 +51,8 @@
 		data() {
 			return {
 				scrollTop:0,
-				goodsItemActive:null,
 				recharge:0,
-				 old: {
+				old: {
 					scrollTop: 0
 				},
 				BGUrl: '/static/images/bg.jpg',
