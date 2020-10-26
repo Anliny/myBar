@@ -9,7 +9,7 @@
 				<view class="number">当晚人数：769</view>
 			</view>
 			<view class="avatar">
-				<view class="item" v-for="(item,index) in avatarList" :key="index">
+				<view class="item" v-for="(item,index) in avatarList" :key="index" @click="handleGoUsers">
 					<image :src="item" mode="scaleToFill"></image>
 				</view>
 			</view>
@@ -84,27 +84,29 @@
 			 setTimeout(function () {
 				 console.log('start pulldown');
 			 }, 1000);
-			uni.startPullDownRefresh();
+			// uni.startPullDownRefresh();
 		},
 		 onPullDownRefresh() {
 		        //监听下拉刷新动作的执行方法，每次手动下拉刷新都会执行一次
 		        console.log('refresh')
 		        setTimeout(function () {
 		            uni.stopPullDownRefresh();  //停止下拉刷新动画
+					// 跳转商品购买 (这种跳转方式在H5上只能用相对路径)
+					uni.navigateTo({url:'../camera/index'});
 		        }, 1000);
 		    },
 
 		methods: {
-			 upper: function(e) {
+			upper: function(e) {
 				console.log(e)
 			},
 			lower: function(e) {
 				console.log(e)
 			},
-			  scroll: function(e) {
-			            console.log(e)
-			            this.old.scrollTop = e.detail.scrollTop
-			        },
+			scroll: function(e) {
+					console.log(e)
+				this.old.scrollTop = e.detail.scrollTop
+			},
 			
 			// 获取文本框内容
 			getChat(event){
@@ -123,8 +125,8 @@
 				]
 				this.inputValue = ""
 			},
-			// 跳转商品购买 (这种跳转方式在H5上只能用相对路径)
 			handleGoods(){
+				// 跳转商品购买 (这种跳转方式在H5上只能用相对路径)
 				uni.navigateTo({url:'../goods/index'});
 			},
 			//调用摄像头或选择文件上传
@@ -137,6 +139,10 @@
 						console.log(JSON.stringify(res.tempFilePaths));
 					}
 				});
+			},
+			// 跳转到用户列表
+			handleGoUsers(){
+				uni.navigateTo({url:'../users/index'});
 			}
 		}
 	}

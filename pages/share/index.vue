@@ -123,7 +123,7 @@
 	.imageContainer {
 		width: 750rpx;
 		margin-top: 10rpx;
-		height: calc(100% - 300rpx);
+		height: calc(100% - 200rpx);
 		
 	}
 	

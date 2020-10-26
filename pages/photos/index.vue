@@ -1,7 +1,7 @@
 <template>
 	<view class="content" :style="{background:`url(${BGUrl})`}" style="background-size: 750upx;">
 		<view class="header">
-			<view class="goBack">
+			<view class="goBack" @click="handleGoBack">
 				<image class="icon" src="./images/left.png" mode="scaleToFill"></image>
 				回现场
 			</view>
@@ -12,18 +12,9 @@
 				</view>
 			</view>
 		</view>
-		<!-- <uni-swiper-dot :info="info" :current="current" field="content" :mode="mode">
-		    <swiper class="swiper-box1" @change="change" style="width: 100%;">
-		        <swiper-item class="swiper-item"  v-for="(item ,index) in info" :key="index">
-		            <view class="swiper-item-container" :style="{background:`#f5${index}`}">{{item}}</view>
-		        </swiper-item>
-		    </swiper>
-		</uni-swiper-dot> -->
-		<!-- <goodsSwiper :datas="info" :config="config" @change="swiperChange" @tapFun="tapFun"></goodsSwiper> -->
-		<!-- <spaceSwiper></spaceSwiper> -->
+		
 		<swiper :loop="false" class="imageContainer" previous-margin="45rpx" next-margin="45rpx" >
 			<swiper-item class="swiperitem" :style="{backgroundImage:'url('+item+')'}" v-for="(item,index) in imgList" :key="index">
-				<!-- <image class="itemImg" :src="item" lazy-load></image> -->
 				<view class="textWapper">
 					<view class="icon">Live</view>
 					<view class="text">Current Songs</view>
@@ -33,11 +24,11 @@
 						<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scrolltoupper="upper" @scrolltolower="lower"
 						                @scroll="scroll">
 							<view  v-for="item in chatList" :key="item.id" style="margin-bottom: 10upx;">
-									<view class="chatItem">
-										<view class="tableNumber" v-if="item.tableNumber">{{item.tableNumber}}</view>
-										<image class="userIcon" :src="item.userIcon" mode="scaleToFill"></image>
-										<view class="text">{{item.text}}</view>
-									</view>
+								<view class="chatItem">
+									<view class="tableNumber" v-if="item.tableNumber">{{item.tableNumber}}</view>
+									<image class="userIcon" :src="item.userIcon" mode="scaleToFill"></image>
+									<view class="text">{{item.text}}</view>
+								</view>
 							</view>
 						 </scroll-view>
 					</view>
@@ -56,93 +47,90 @@
 </template>
 
 <script>
-	import FontAwesome from '@/components/Am-FontAwesome/index.vue'
-	import {userData} from "../users/mock.js"
-	import goodsSwiper from "@/components/pyh-goodsSwiper/pyh-goodsSwiper.vue"
-	import spaceSwiper from '@/components/alexbai-spaceSwiper/space-swiper.vue'
-
-	export default {
-		components: {
-		    goodsSwiper,spaceSwiper
+import {userData} from "../users/mock.js"
+export default {
+	data() {
+		return {
+			scrollTop:0,
+			recharge:0,
+			old: {
+				scrollTop: 0
+			},
+			inputValue:'',
+			info: [
+				111,222,333
+			],
+			current: 0,
+			mode: 'round',
+			BGUrl: '/static/images/bg.jpg',
+			logo: '/static/images/logo.png',
+			avatarList:['/static/images/avatar1.png','/static/images/avatar2.png','/static/images/avatar3.png'],
+			tips:'/static/images/tips.png',
+			imgList: [
+				'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3687173686,831911132&fm=26&gp=0.jpg',
+				'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2601388974,2460884874&fm=26&gp=0.jpg',
+				'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2294966447,248611631&fm=26&gp=0.jpg'
+			],
+			chatList:[
+				{
+					id:1,
+					tableNumber:'799',
+					userIcon:require('./images/user.png'),
+					text:'真好听你撒范德萨范德萨你懂撒范德萨范德萨发，是否你懂撒范德萨发生的三废士大夫的萨芬你撒范德萨发撒范德萨发',
+				},{
+					id:2,
+					tableNumber:'99',
+					userIcon:require('./images/user.png'),
+					text:'真好听',
+				},{
+					id:3,
+					tableNumber:'',
+					userIcon:require('./images/user.png'),
+					text:'真好听',
+				}
+			]
+		}
+	},
+	onLoad() {},
+	methods: {
+		upper: function(e) {
+			console.log(e)
 		},
-		data() {
-			return {
-				scrollTop:0,
-				recharge:0,
-				old: {
-					scrollTop: 0
-				},
-				inputValue:'',
-				info: [
-					111,222,333
-				],
-				current: 0,
-				mode: 'round',
-				BGUrl: '/static/images/bg.jpg',
-				logo: '/static/images/logo.png',
-				avatarList:['/static/images/avatar1.png','/static/images/avatar2.png','/static/images/avatar3.png'],
-				tips:'/static/images/tips.png',
-				imgList: [
-					'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3687173686,831911132&fm=26&gp=0.jpg',
-					'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2601388974,2460884874&fm=26&gp=0.jpg',
-					'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2294966447,248611631&fm=26&gp=0.jpg'
-				],
-				chatList:[
-					{
-						id:1,
-						tableNumber:'799',
-						userIcon:require('./images/user.png'),
-						text:'真好听你撒范德萨范德萨你懂撒范德萨范德萨发，是否你懂撒范德萨发生的三废士大夫的萨芬你撒范德萨发撒范德萨发',
-					},{
-						id:2,
-						tableNumber:'99',
-						userIcon:require('./images/user.png'),
-						text:'真好听',
-					},{
-						id:3,
-						tableNumber:'',
-						userIcon:require('./images/user.png'),
-						text:'真好听',
-					}
-				]
-			}
+		lower: function(e) {
+			console.log(e)
 		},
-		onLoad() {},
-		methods: {
-			upper: function(e) {
+		scroll: function(e) {
 				console.log(e)
-			},
-			lower: function(e) {
-				console.log(e)
-			},
-		  scroll: function(e) {
-					console.log(e)
-					this.old.scrollTop = e.detail.scrollTop
-			},
-			
-			change(e) {
-				this.current = e.detail.current;
-			},
-			
-			// 获取文本框内容
-			getChat(event){
-				this.inputValue = event.target.value
-			},
-			// 点击发送
-			handleSubmit(){
-				this.chatList = [
-					...this.chatList,
-					{
-						id:this.chatList.length+1,
-						tableNumber:'799',
-						userIcon:require('./images/user.png'),
-						text:this.inputValue,
-					}
-				]
-				this.inputValue = ""
-			}
+				this.old.scrollTop = e.detail.scrollTop
+		},
+		
+		change(e) {
+			this.current = e.detail.current;
+		},
+		
+		// 获取文本框内容
+		getChat(event){
+			this.inputValue = event.target.value
+		},
+		// 点击发送
+		handleSubmit(){
+			this.chatList = [
+				...this.chatList,
+				{
+					id:this.chatList.length+1,
+					tableNumber:'799',
+					userIcon:require('./images/user.png'),
+					text:this.inputValue,
+				}
+			]
+			this.inputValue = ""
+		},
+		// 返回聊天页面
+		handleGoBack(){
+			uni.navigateTo({url:'../index/index'});
 		}
 	}
+}
 </script>
 
 <style>

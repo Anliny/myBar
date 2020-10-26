@@ -35,7 +35,12 @@
 		},{
 			"path": "pages/share/index",
 			"style": {
-				"navigationBarTitleText": "photos"
+				"navigationBarTitleText": "share"
+			}
+		},{
+			"path": "pages/camera/index",
+			"style": {
+				"navigationBarTitleText": "camera"
 			}
 		}
 	],
