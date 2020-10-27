@@ -3,11 +3,12 @@
 		<uni-swiper-dot :info="info" :current="current" field="content" :mode="mode">
 		    <swiper class="swiper-box" @change="change">
 		        <swiper-item v-for="(item ,index) in info" :key="index">
-		            <view class="swiper-item">
-						<view class="avatar" v-for="content in item.content"  :key="content.id"  >
-							<view class="number" v-if="content.id%12 == 0">{{content.total}}+</view>
+		            <view class="swiper-item" >
+						<view class="avatar" v-for="(content,index) in item.content" v-if="content !== null "  :key="index" >
+							<view class="number" v-if="(index+1)%12 == 0">{{content.total}}+</view>
 							<image :src="content.src || ''" mode="scaleToFill" :class="{shadow:content.isSide}"></image>
 						</view>
+						<view class="avatar" v-else></view>
 		            </view>
 		        </swiper-item>
 		    </swiper>
@@ -15,7 +16,7 @@
 		
 		<view class="textWapper">
 			<view class="icon">BEEHIVE</view>
-			<view class="text">Current Songs</view>
+			<view class="text tk-acumin-pro">Current Songs</view>
 		</view>
 		<view class="bottles">
 			<image src="./images/bottles.png" mode="scaleToFill"></image>

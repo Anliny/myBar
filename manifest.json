@@ -1,7 +1,7 @@
 {
     "name" : "cheers",
-    "appid" : "",
-    "description" : "",
+    "appid" : "__UNI__F0183B1",
+    "description" : "唱歌喝酒",
     "versionName" : "1.0.0",
     "versionCode" : "100",
     "transformPx" : false,
@@ -72,7 +72,24 @@
     "mp-toutiao" : {
         "usingComponents" : true
     },
-    "uniStatistics": {  
-        "enable": false
+    "uniStatistics" : {
+        "enable" : false
+    },
+    "h5" : {
+        "title" : "test",
+        "domain" : "www.baidu.com",
+        "router" : {
+            "mode" : "history",
+            "base" : "./"
+        },
+        "template" : "index.html",
+        "optimization" : {
+            "treeShaking" : {
+                "enable" : true
+            }
+        },
+        "devServer" : {
+            "https" : false
+        }
     }
 }

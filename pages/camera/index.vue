@@ -3,7 +3,7 @@
 		<image class="contentCamera" src="./images/cameraIcon.png" mode="scaleToFill"></image>
 		<view class="textWapper">
 			<view class="icon">Live</view>
-			<view class="text">Current Songs</view>
+			<view class="text tk-acumin-pro">Current Songs</view>
 		</view>
 		<image class="down" src="./images/down.png" mode="scaleToFill"></image>
 		<view class="cameraBtn" @click="handleGoPhotos">

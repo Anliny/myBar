@@ -7,23 +7,23 @@
 			</view>
 			
 			<view class="avatar">
-				<view class="item" v-for="(item,index) in avatarList" :key="index">
+				<view class="item" @click="goShare" v-for="(item,index) in avatarList" :key="index">
 					<image :src="item" mode="scaleToFill"></image>
 				</view>
 			</view>
 		</view>
 		
 		<swiper :loop="false" class="imageContainer" previous-margin="45rpx" next-margin="45rpx" >
-			<swiper-item class="swiperitem" :style="{backgroundImage:'url('+item+')'}" v-for="(item,index) in imgList" :key="index">
+			<swiper-item class="swiperitem" :style="{backgroundImage:'url('+item.bgUrl+')'}" v-for="(item,index) in imgList" :key="index">
 				<view class="textWapper">
-					<view class="icon">Live</view>
-					<view class="text">Current Songs</view>
+					<view class="icon">{{item.song.icon}}</view>
+					<view class="text tk-acumin-pro">{{item.song.name}}</view>
 				</view>
 				<view class="chatContanner">
 					<view class="chatView" style="">
-						<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scrolltoupper="upper" @scrolltolower="lower"
+						<scroll-view ref="refScollView" :scroll-top="item.scrollTop" scroll-y="true" class="scroll-Y" @scrolltoupper="upper" @scrolltolower="lower"
 						                @scroll="scroll">
-							<view  v-for="item in chatList" :key="item.id" style="margin-bottom: 10upx;">
+							<view  v-for="item in item.chatList" :key="item.id" style="margin-bottom: 10upx;">
 								<view class="chatItem">
 									<view class="tableNumber" v-if="item.tableNumber">{{item.tableNumber}}</view>
 									<image class="userIcon" :src="item.userIcon" mode="scaleToFill"></image>
@@ -36,8 +36,8 @@
 				<view class="bottomWapper">
 					<view class="line"></view>
 					<view class="chatWapper">
-						<input type="text" class="chatInput" @blur="getChat" :value="inputValue" />
-						<view class="submit" @click="handleSubmit">发送</view>
+						<input type="text" class="chatInput" @focus="getIndex(index)" @blur="getChat" :value="item.inputValue" />
+						<view class="submit" @click="handleSubmit(index)">发送</view>
 						<image class="gave" src="./images/goodsBtn.png" @click="handleGoods" mode="scaleToFill"></image>
 					</view>
 				</view>
@@ -51,48 +51,62 @@ import {userData} from "../users/mock.js"
 export default {
 	data() {
 		return {
-			scrollTop:0,
+			
 			recharge:0,
 			old: {
 				scrollTop: 0
 			},
-			inputValue:'',
 			info: [
 				111,222,333
 			],
 			current: 0,
+			index:null,
 			mode: 'round',
 			BGUrl: '/static/images/bg.jpg',
 			logo: '/static/images/logo.png',
 			avatarList:['/static/images/avatar1.png','/static/images/avatar2.png','/static/images/avatar3.png'],
 			tips:'/static/images/tips.png',
 			imgList: [
-				'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3687173686,831911132&fm=26&gp=0.jpg',
-				'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2601388974,2460884874&fm=26&gp=0.jpg',
-				'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2294966447,248611631&fm=26&gp=0.jpg'
-			],
-			chatList:[
 				{
+					bgUrl:'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3687173686,831911132&fm=26&gp=0.jpg',
+					scrollTop:0,
 					id:1,
-					tableNumber:'799',
-					userIcon:require('./images/user.png'),
-					text:'真好听你撒范德萨范德萨你懂撒范德萨范德萨发，是否你懂撒范德萨发生的三废士大夫的萨芬你撒范德萨发撒范德萨发',
+					inputValue:'',
+					song:{icon:'GOOD',name:'往事与如何'},
+					chatList:[
+						{
+							id:1,
+							tableNumber:'799',
+							userIcon:require('./images/user.png'),
+							text:"真好听",
+						}
+					]
 				},{
-					id:2,
-					tableNumber:'99',
-					userIcon:require('./images/user.png'),
-					text:'真好听',
+					bgUrl:'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2601388974,2460884874&fm=26&gp=0.jpg',
+					scrollTop:0,
+					song:{icon:'LIVE',name:'Current Songs'},
+					id:1,
+					inputValue:'',
+					chatList:[]
 				},{
-					id:3,
-					tableNumber:'',
-					userIcon:require('./images/user.png'),
-					text:'真好听',
+					bgUrl:'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2294966447,248611631&fm=26&gp=0.jpg',
+					scrollTop:0,
+					song:{icon:'NEW',name:'下山'},
+					id:1,
+					inputValue:'',
+					chatList:[]
 				}
-			]
+			],
+			
 		}
 	},
 	onLoad() {},
 	methods: {
+		// 去分享
+		goShare(){
+			uni.navigateTo({url:'../share/index'});
+		},
+		
 		upper: function(e) {
 			console.log(e)
 		},
@@ -108,22 +122,34 @@ export default {
 			this.current = e.detail.current;
 		},
 		
+	
+		getIndex(index){
+			this.index = index
+		},
 		// 获取文本框内容
 		getChat(event){
-			this.inputValue = event.target.value
+			console.log(event)
+			this.imgList[this.index].inputValue = event.target.value
 		},
 		// 点击发送
-		handleSubmit(){
-			this.chatList = [
-				...this.chatList,
+		handleSubmit(number){
+			console.log(number)
+			this.imgList[number].chatList = [
+				...this.imgList[number].chatList,
 				{
-					id:this.chatList.length+1,
+					id:this.imgList[number].chatList.length+1,
 					tableNumber:'799',
 					userIcon:require('./images/user.png'),
-					text:this.inputValue,
+					text:this.imgList[number].inputValue,
 				}
 			]
-			this.inputValue = ""
+			// console.log(this.)
+			this.imgList[number].inputValue = ""
+			this.index = null
+			this.$nextTick(()=>{
+				console.log(this.$refs.refScollView[number].$refs.content.offsetHeight)
+				this.imgList[number].scrollTop = this.$refs.refScollView[number].$refs.content.offsetHeight
+			})
 		},
 		// 返回聊天页面
 		handleGoBack(){

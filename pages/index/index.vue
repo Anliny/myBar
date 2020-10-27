@@ -1,12 +1,12 @@
 <template>
-	<view class="content" :style="{background:`url(${BGUrl})`}" style="background-size: 750upx;">
+	<view class="content" :style="{backgroundImage:`url(${BGUrl})`}" >
 		<view class="header">
 			<view class="logo">
 				<image :src="logo"   mode="scaleToFill"></image>
 			</view>
 			<view class="nameWapper">
 				<view class="title">上海双人舞酒吧</view>
-				<view class="number">当晚人数：769</view>
+				<view class="number">当晚人数：769</view>   
 			</view>
 			<view class="avatar">
 				<view class="item" v-for="(item,index) in avatarList" :key="index" @click="handleGoUsers">
@@ -16,12 +16,12 @@
 		</view>
 		<view class="textWapper">
 			<view class="icon">Live</view>
-			<view class="text">Current Songs</view>
+			<view class="text tk-acumin-pro">Current Songs</view>
 		</view>
 		<view class="empetTop"></view>
 		<view class="chatContanner" style="position: relative;">
 			<view class="chatView" style="">
-				<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scrolltoupper="upper" @scrolltolower="lower"
+				<scroll-view ref="refScollView" :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scrolltoupper="upper" @scrolltolower="lower"
 				                @scroll="scroll">
 					<view  v-for="item in chatList" :key="item.id" style="margin-bottom: 10upx;">
 							<view class="chatItem">
@@ -37,7 +37,7 @@
 		<view class="bottomWapper">
 			<view class="line"></view>
 			<view class="chatWapper">
-				<input type="text" class="chatInput" @blur="getChat" :value="inputValue" />
+				<input adjust-position type="text" class="chatInput" @focus="handleFocus" @blur="getChat" :value="inputValue" />
 				<view class="submit" @click="handleSubmit">发送</view>
 				<image class="gave" src="./images/goodsBtn.png" @click="handleGoods" mode="scaleToFill"></image>
 			</view>
@@ -50,7 +50,7 @@
 	export default {
 		data() {
 			return {
-				scrollTop:0,
+				scrollTop:200,
 				recharge:0,
 				old: {
 					scrollTop: 0
@@ -61,7 +61,7 @@
 				tips:'/static/images/tips.png',
 				inputValue:'',
 				chatList:[
-					{
+					/* {
 						id:1,
 						tableNumber:'799',
 						userIcon:require('./images/user.png'),
@@ -76,7 +76,22 @@
 						tableNumber:'',
 						userIcon:require('./images/user.png'),
 						text:'真好听',
-					}
+					},{
+						id:4,
+						tableNumber:'',
+						userIcon:require('./images/user.png'),
+						text:'真好听',
+					},{
+						id:5,
+						tableNumber:'799',
+						userIcon:require('./images/user.png'),
+						text:'真好听你撒范德萨范德萨你懂撒范德萨范德萨发，是否你懂撒范德萨发生的三废士大夫的萨芬你撒范德萨发撒范德萨发',
+					},{
+						id:6,
+						tableNumber:'799',
+						userIcon:require('./images/user.png'),
+						text:'真好听你撒范德萨范德萨你懂撒范德萨范德萨发，是否你懂撒范德萨发生的三废士大夫的萨芬你撒范德萨发撒范德萨发',
+					} */
 				]
 			}
 		},
@@ -84,6 +99,11 @@
 			 setTimeout(function () {
 				 console.log('start pulldown');
 			 }, 1000);
+			this.getClientHight()
+			this.$nextTick(()=>{
+				console.log(this.$refs.refScollView)
+			})
+			// console.log(document.querySelector("#idScollView"))
 			// uni.startPullDownRefresh();
 		},
 		 onPullDownRefresh() {
@@ -97,15 +117,55 @@
 		    },
 
 		methods: {
+// 			scrollToBottom () {
+// 				let query = uni.createSelectorQuery();
+// 				//这个是你所有渲染的view 的高度 下面自己添加样式的 边距之类的数据
+// 				query.in(this).selectAll('.main-item').boundingClientRect();
+// 				//这个是id
+// 				query.in(this).select('#scrollview').boundingClientRect();
+// 				query.exec((res) => {
+// 					let mitemHeight = 0;
+// 					//累加所有元素的高度和边距
+// 					res[0].forEach((rect) => mitemHeight = mitemHeight + rect.height + 40)  
+// 					//只有大于 滚动条的高度 再设置
+// 					if (mitemHeight > that.solHeight) {  
+// 							that.scrollTop = (mitemHeight + 100)
+// 					}
+// 				})
+// 　　　　		},
+
+			
+			
+			// 获取屏幕高度
+			getClientHight() {
+				let that = this;
+				uni.getSystemInfo({
+					success(res) {
+						console.log(res.screenHeight); //获取手机设备屏幕高度
+						// that.clientHight = res.screenHeight;
+						// that.footerHight = that.clientHight * 0.1;
+					}
+				})
+			},
+			
+			
+			
 			upper: function(e) {
-				console.log(e)
+				// console.log(e)
 			},
 			lower: function(e) {
-				console.log(e)
+				// console.log(e)
 			},
 			scroll: function(e) {
-					console.log(e)
+					// console.log(e)
 				this.old.scrollTop = e.detail.scrollTop
+			},
+			
+			
+			// 文本框焦点事件
+			handleFocus(e){
+				// 获取键盘高度， H5上无法获取
+				// alert(e.detail.height)
 			},
 			
 			// 获取文本框内容
@@ -124,6 +184,12 @@
 					}
 				]
 				this.inputValue = ""
+				// this.$refs.refScollView.scrollTop=50
+				this.$nextTick(()=>{
+					this.scrollTop = this.$refs.refScollView.$refs.content.offsetHeight
+					// console.log(this.$refs.refScollView.$refs.content.offsetHeight)
+				})
+				
 			},
 			handleGoods(){
 				// 跳转商品购买 (这种跳转方式在H5上只能用相对路径)

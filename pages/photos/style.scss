@@ -14,17 +14,17 @@
 		align-items: center;
 	}
 	.goBack{
-		height: 110upx;
+		height: 73rpx;
 		width: 336upx;
-		font-size: 68upx;
+		font-size: 50upx;
 		font-weight: bold;
-		line-height: 110upx;
+		line-height: 73upx;
 		color: #cacaca;
 		
 	}
 	.goBack .icon{
-		width: 64upx;
-		height: 64upx;
+		width: 43rpx;
+		height: 43rpx;
 		margin-right: 20upx;
 		vertical-align: middle;
 	}
@@ -48,26 +48,25 @@
 	}
 	.avatar{
 		width: 430rpx;
-		height: 160rpx;	
+		height: 153rpx;	
 		padding-right: 10px;
 	}
 	.avatar .item{
-		width: 160upx;
-		height: 160upx;
+		width: 153rpx;
+		height: 153rpx;
 		border-radius: 50%;
 		float: right;
 		margin-right: -32upx;
 	}
 	.avatar .item image{width: 100%;height: 100%;}
 	
-	
 	.textWapper{
 		padding: 5px 20px;
-		width: 437rpx;
-		height: 208rpx;
+		height: 139rpx;
 		position: absolute;
-		top: 20rpx;
+		top: 60rpx;
 		left: 20rpx;
+		
 		
 	}
 	.textWapper image{
@@ -75,11 +74,13 @@
 		height: 100%;
 	}
 	.textWapper .icon{
-		height: 20px;
-		width: 50px;
 		text-align: center;
 		line-height: 20px;
-		background-color: #5555ff;
+		display: inline-block;
+		padding: 0 20rpx;
+		color: rgb(69,144,124);
+		font-weight: bolder;
+		background-color: #5555ffc9;
 		transform: skewX(-20deg);
 	}
 	.textWapper .text{
@@ -135,6 +136,8 @@
 	}
 	.chatContanner .chatItem .tableNumber{
 		height: 67.33upx;
+		min-width: 107rpx;
+		text-align: center;
 		border-radius: 67.33upx;
 		background-color: #490e38c7;
 		display: inline-block;
@@ -143,7 +146,8 @@
 		font-weight: bolder;
 		line-height: 67.33upx;
 		color: #bf72ac;
-		margin:5upx;
+		margin-top:10rpx;
+		font-style: oblique;
 	}
 	.chatContanner .chatItem .userIcon {
 		height: 86.67upx;
@@ -154,8 +158,10 @@
 		font-size: 28upx;
 		font-weight: bolder;
 		color: #FFFFFF;
-		line-height: 40upx;
-		flex: 1;
+		min-height: 30rpx;
+		line-height: 30rpx;
+		margin-top: 20rpx;
+		flex:1;
 	}
 	
 	.bottomWapper{
@@ -194,10 +200,11 @@
 		float: left;
 	}
 	.bottomWapper .chatWapper .submit{
-		width: 100upx;
+		width: 120rpx;
 		height: 74upx;
 		text-align: center;
 		float: right;
+		font-size: 28rpx;
 		background-color: #5555FF;
 		border-radius: 74upx;
 		line-height: 74upx;

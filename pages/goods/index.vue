@@ -15,9 +15,9 @@
 			</view>
 		</view>
 		<view class="textWapper">
-			<!-- <view class="icon">Live</view>
-			<view class="text">Current Songs</view> -->
-			<image :src="tips" mode="scaleToFill"></image>
+			<view class="icon">Live</view>
+			<view class="text tk-acumin-pro">Current Songs</view>
+			<!-- <image :src="tips" mode="scaleToFill"></image> -->
 		</view>
 		<view class="bottomWapper">
 			<view class="goodsWapper" >
@@ -31,7 +31,8 @@
 			</view>
 			<view class="payment">
 				<view class="recharge">
-					{{recharge}}   充值>
+					{{recharge}}   充值＞
+					<!-- <image src="./images/icon.png" mode="scaleToFill"></image> -->
 				</view>
 				<!-- <view @click="chooseImage">热门</view> -->
 				<view class="submit">送给他</view>

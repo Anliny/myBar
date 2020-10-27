@@ -125,16 +125,22 @@
 		width: 196upx;
 		height: 47upx;
 		margin: 6upx 0;
-		padding: 0 10upx;
+		padding: 0rpx 20upx;
 		border-radius: 26upx;
 		text-align: right;
+		box-sizing: border-box;
 		color: #fff;
+	}
+	.payment .recharge image{
+		width: 62rpx;
+		height: 21rpx;
 	}
 	.payment .submit{
 		width: 144upx;
 		height: 53upx;
 		background-color: #674892;
 		float: right;
+		line-height: 53rpx;
 		border-radius: 26upx;
 		text-align: center;
 		color: #fff;

@@ -1,7 +1,7 @@
 <template>
 	<view class="content" :style="{background:`url(${BGUrl})`}" style="background-size: 750upx;">
 		<view class="header">
-			<view class="goBack">
+			<view class="goBack" @click="goBack">
 				<image class="icon" src="./images/left.png" mode="scaleToFill"></image>
 			</view>
 			<view class="avatarWapper">
@@ -78,6 +78,10 @@
 		},
 		onLoad() {},
 		methods: {
+			goBack(){
+				uni.navigateTo({url:'../photos/index'});
+			},
+			
 			upper: function(e) {
 				console.log(e)
 			},
