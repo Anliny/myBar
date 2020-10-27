@@ -17,7 +17,7 @@
 			<swiper-item class="swiperitem" :style="{backgroundImage:'url('+item+')'}" v-for="(item,index) in imgList" :key="index">
 				<view class="textWapper">
 					<view class="icon">Live</view>
-					<view class="text">Current Songs</view>
+					<view class="text tk-acumin-pro">Current Songs</view>
 				</view>
 				<view class="shareBtn">
 					<view class="icon">已将微信发送给你</view>

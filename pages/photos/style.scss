@@ -80,8 +80,8 @@
 		padding: 0 20rpx;
 		color: rgb(69,144,124);
 		font-weight: bolder;
-		background-color: #5555ffc9;
-		transform: skewX(-20deg);
+		background-color: rgba(85,85,255,0.79);
+		transform: skewX(-25deg);
 	}
 	.textWapper .text{
 		font-size: 30px;
@@ -130,6 +130,7 @@
 		display: inline-flex;
 		word-wrap:break-word; 
 		word-break:break-all; 
+		align-items: center;
 	}
 	.chatContanner .chatItem .userHeader{
 		
@@ -139,14 +140,14 @@
 		min-width: 107rpx;
 		text-align: center;
 		border-radius: 67.33upx;
-		background-color: #490e38c7;
+		background-color: rgba(73,14,56,0.78);
 		display: inline-block;
 		padding: 0 10upx;
 		font-size: 28upx;
 		font-weight: bolder;
 		line-height: 67.33upx;
 		color: #bf72ac;
-		margin-top:10rpx;
+		/* margin-top:10rpx; */
 		font-style: oblique;
 	}
 	.chatContanner .chatItem .userIcon {
@@ -160,7 +161,6 @@
 		color: #FFFFFF;
 		min-height: 30rpx;
 		line-height: 30rpx;
-		margin-top: 20rpx;
 		flex:1;
 	}
 	
@@ -168,7 +168,6 @@
 		position: absolute;
 		bottom: 0;
 		height: 204upx;
-		/* background-color: #55aaff; */
 		padding: 56upx 0;
 		width: 630rpx;
 		box-sizing: border-box;

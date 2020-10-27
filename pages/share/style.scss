@@ -75,7 +75,6 @@
 	
 	.textWapper{
 		padding: 5px 20px;
-		width: 437rpx;
 		height: 208rpx;
 		position: absolute;
 		bottom: 80rpx;
@@ -87,16 +86,18 @@
 		height: 100%;
 	}
 	.textWapper .icon{
-		height: 20px;
-		width: 50px;
+		display: inline-block;
 		text-align: center;
-		line-height: 20px;
+		padding: 0 20rpx;
+		line-height: 25px;
 		background-color: #5555ff;
 		transform: skewX(-20deg);
+		color:rgb(255,225,9);
 	}
 	.textWapper .text{
 		font-size: 30px;
 		color: #fff;
+		text-align: left;
 	}
 	
 	.swiper-box{
@@ -115,7 +116,8 @@
 	}
 .shareBtn{
 	height: 85rpx;
-	width: 455rpx;
+	// width: 455rpx;
+	padding: 0 40rpx;
 	font-size: 30rpx;
 	text-align: center;
 	font-weight: bold;
@@ -131,7 +133,7 @@
 	height: 349rpx;
 	width: 134rpx;
 	bottom: 20rpx;
-	right: 26rpx;
+	right: 76rpx;
 }
 	
 	

@@ -66,32 +66,7 @@
 						tableNumber:'799',
 						userIcon:require('./images/user.png'),
 						text:'真好听你撒范德萨范德萨你懂撒范德萨范德萨发，是否你懂撒范德萨发生的三废士大夫的萨芬你撒范德萨发撒范德萨发',
-					},{
-						id:2,
-						tableNumber:'99',
-						userIcon:require('./images/user.png'),
-						text:'真好听',
-					},{
-						id:3,
-						tableNumber:'',
-						userIcon:require('./images/user.png'),
-						text:'真好听',
-					},{
-						id:4,
-						tableNumber:'',
-						userIcon:require('./images/user.png'),
-						text:'真好听',
-					},{
-						id:5,
-						tableNumber:'799',
-						userIcon:require('./images/user.png'),
-						text:'真好听你撒范德萨范德萨你懂撒范德萨范德萨发，是否你懂撒范德萨发生的三废士大夫的萨芬你撒范德萨发撒范德萨发',
-					},{
-						id:6,
-						tableNumber:'799',
-						userIcon:require('./images/user.png'),
-						text:'真好听你撒范德萨范德萨你懂撒范德萨范德萨发，是否你懂撒范德萨发生的三废士大夫的萨芬你撒范德萨发撒范德萨发',
-					} */
+					}*/
 				]
 			}
 		},
@@ -103,8 +78,6 @@
 			this.$nextTick(()=>{
 				console.log(this.$refs.refScollView)
 			})
-			// console.log(document.querySelector("#idScollView"))
-			// uni.startPullDownRefresh();
 		},
 		 onPullDownRefresh() {
 		        //监听下拉刷新动作的执行方法，每次手动下拉刷新都会执行一次
@@ -117,24 +90,6 @@
 		    },
 
 		methods: {
-// 			scrollToBottom () {
-// 				let query = uni.createSelectorQuery();
-// 				//这个是你所有渲染的view 的高度 下面自己添加样式的 边距之类的数据
-// 				query.in(this).selectAll('.main-item').boundingClientRect();
-// 				//这个是id
-// 				query.in(this).select('#scrollview').boundingClientRect();
-// 				query.exec((res) => {
-// 					let mitemHeight = 0;
-// 					//累加所有元素的高度和边距
-// 					res[0].forEach((rect) => mitemHeight = mitemHeight + rect.height + 40)  
-// 					//只有大于 滚动条的高度 再设置
-// 					if (mitemHeight > that.solHeight) {  
-// 							that.scrollTop = (mitemHeight + 100)
-// 					}
-// 				})
-// 　　　　		},
-
-			
 			
 			// 获取屏幕高度
 			getClientHight() {
@@ -147,8 +102,6 @@
 					}
 				})
 			},
-			
-			
 			
 			upper: function(e) {
 				// console.log(e)
