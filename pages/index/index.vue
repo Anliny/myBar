@@ -78,10 +78,7 @@
 			this.$nextTick(()=>{
 				console.log(this.$refs.refScollView)
 			})
-			
-			
-			let coverImg = this.BGUrl
-			this.urlTobase64(coverImg);
+		
 		},
 		 onPullDownRefresh() {
 		        //监听下拉刷新动作的执行方法，每次手动下拉刷新都会执行一次

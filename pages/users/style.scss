@@ -4,6 +4,7 @@ page,.content{
 .swiper-box{
 	background-color: rgba(0,0,0,.3);
 	height: 440rpx;
+	border-radius:0 0 100rpx 100rpx;
 }
 .swiper-item{
 	display: flex;
@@ -82,26 +83,12 @@ page,.content{
 	bottom: 0;
 	margin: auto;
 }
-.table .tableLeft .tableItem .user1{
-	transform: translate(-150upx);
-}
-.table .tableLeft .tableItem .user2{
-	transform: translate(-100upx,-100upx);
-}
-.table .tableLeft .tableItem .user3{
-	transform: translateY(-150upx);
-}
-.table .tableLeft .tableItem .user4{
-	transform: translate(100upx,-100upx);
-}
-.table .tableLeft .tableItem .user5{
-	transform: translate(150upx);
-}
-.table .tableLeft .tableItem .user6{
-	transform: translate(-100upx,-100upx);
-}
+
 .shadow{
 	box-shadow: 0 0 40upx #fa12c1;
+}
+.zIndex{
+	z-index: 100;
 }
 .table .tableLeft .tableItem .number{
 	position: absolute;

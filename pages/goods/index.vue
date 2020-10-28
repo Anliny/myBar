@@ -32,12 +32,15 @@
 			<view class="payment">
 				<view class="recharge">
 					{{recharge}}   充值＞
-					<!-- <image src="./images/icon.png" mode="scaleToFill"></image> -->
 				</view>
-				<!-- <view @click="chooseImage">热门</view> -->
-				<view class="submit">送给他</view>
+				<view class="btnGroup" >
+					<view class="number" @click="handleConut">{{number}} ＞</view>
+					<view class="submit" @click="handleSubmit">送给他</view>
+				</view>
 			</view>
 		</view>
+		<image class="fillImage" v-if="isShowFillImage"  :src="isShowFillImage ? 'https://atour-1300409046.cos.ap-shanghai.myqcloud.com/APNG/%E5%9B%9B%E5%8F%B6%E8%8D%89.png':''" mode="scaleToFill"></image>
+	
 	</view>
 </template>
 
@@ -45,8 +48,10 @@
 	export default {
 		data() {
 			return {
+				isShowFillImage:false,
 				goodsItemActive:null,
 				recharge:0,
+				number:0,
 				BGUrl: require('@/static/images/bg.jpg'),
 				logo: '/static/images/logo.png',
 				avatarList:['/static/images/avatar1.png','/static/images/avatar2.png','/static/images/avatar3.png'],
@@ -96,8 +101,16 @@
 				]
 			}
 		},
+		
 		onLoad() {},
 		methods: {
+			handleSubmit(){
+				this.isShowFillImage = true
+				setTimeout(() =>{
+					this.isShowFillImage = false
+				},4000)
+			},
+			
 			// 点击商品
 			handleGoodsItem(data){
 				this.goodsItemActive = data.id

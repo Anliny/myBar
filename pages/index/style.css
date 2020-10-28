@@ -149,7 +149,7 @@
 		width:calc(100% - 40upx);
 		left: 20upx;
 		height: 2upx;
-		background-color: #F1F1F1;
+		background-color: #dcdddd;
 		position: absolute;
 		top: 0;
 	}

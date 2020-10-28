@@ -24,11 +24,12 @@
 		
 		<view class="table">
 			<view class="tableLeft">
-				<view class="tableItem" v-for="table in tableList.tableLeft" :key= "table.id">
+				<view class="tableItem" v-for="(table,index) in tableList.tableLeft" :key= "table.id">
 					<image 
 						v-for="(user,index) in table.users" 
 						:key="user.id" 
-						:class="[`user${index+1}`,{shadow:user.isShadow}]" 
+						:style="{transform: `rotateZ(${(360/table.users.length)*index}deg) translateY(80px)`}"
+						:class="{shadow:user.isShadow,zIndex:user.isShadow}" 
 						class="user" 
 						:src="user.userUrl" 
 						mode="scaleToFill">
@@ -61,8 +62,6 @@
 			}
 		},
 		onLoad() {
-			let coverImg = this.BGUrl
-			this.urlTobase64(coverImg);
 		},
 		methods: {
 			change(e) {
