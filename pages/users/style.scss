@@ -3,7 +3,7 @@ page,.content{
 }
 .swiper-box{
 	background-color: rgba(0,0,0,.3);
-	height: 560upx;
+	height: 440rpx;
 }
 .swiper-item{
 	display: flex;
@@ -13,15 +13,16 @@ page,.content{
 	padding: 10upx;
 }
 .swiper-item .avatar{
-	width: 160upx;
-	height: 160upx;
-	margin: 10upx;
+	width: 25%;
+	height: 120rpx;
+	display: flex;
+	padding: 10rpx 0;
 	position: relative;
-	
 }
 .swiper-item .avatar image{
-	width: 100%;
-	height: 100%;
+	width: 120rpx;
+	height: 120rpx;
+	margin: auto;
 	border-radius: 50%;
 }
 .swiper-item .avatar .shadow{
@@ -31,12 +32,15 @@ page,.content{
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 160upx;
-	height: 160upx;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	width: 120upx;
+	height: 120upx;
 	background-color: rgba(0,0,0,.3);
 	font-size: 44upx;
 	text-align: center;
-	line-height: 160upx;
+	line-height: 120upx;
 	font-weight: bolder;
 	border-radius: 50%;
 	z-index: 10;
@@ -175,11 +179,11 @@ page,.content{
 }
 
 .bottles{
-	width: 300upx;
-	height: 440upx;
+	width: 200rpx;
+	height: 280rpx;
 	position: absolute;
-	top:560upx;
-	right: 50upx;
+	top:33vh;
+	right: 60rpx;
 }
 .bottles image{
 	width: 100%;

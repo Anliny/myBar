@@ -62,13 +62,13 @@ export default {
 			current: 0,
 			index:null,
 			mode: 'round',
-			BGUrl: '/static/images/bg.jpg',
+			BGUrl: require('@/static/images/bg.jpg'),
 			logo: '/static/images/logo.png',
 			avatarList:['/static/images/avatar1.png','/static/images/avatar2.png','/static/images/avatar3.png'],
 			tips:'/static/images/tips.png',
 			imgList: [
 				{
-					bgUrl:'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3687173686,831911132&fm=26&gp=0.jpg',
+					bgUrl:require('@/static/images/swiperBG2.jpg'),
 					scrollTop:0,
 					id:1,
 					inputValue:'',
@@ -82,16 +82,9 @@ export default {
 						}
 					]
 				},{
-					bgUrl:'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2601388974,2460884874&fm=26&gp=0.jpg',
+					bgUrl:require('@/static/images/swiperBG1.png'),
 					scrollTop:0,
 					song:{icon:'LIVE',name:'Current Songs'},
-					id:1,
-					inputValue:'',
-					chatList:[]
-				},{
-					bgUrl:'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2294966447,248611631&fm=26&gp=0.jpg',
-					scrollTop:0,
-					song:{icon:'NEW',name:'下山'},
 					id:1,
 					inputValue:'',
 					chatList:[]
@@ -184,7 +177,7 @@ export default {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background-size: 630rpx 100%;
+		background-size: 630rpx auto;
 		background-repeat: no-repeat;
 		padding-right: 40rpx;
 		 box-sizing: border-box;

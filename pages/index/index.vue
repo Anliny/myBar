@@ -55,7 +55,7 @@
 				old: {
 					scrollTop: 0
 				},
-				BGUrl: '/static/images/bg.jpg',
+				BGUrl: require('@/static/images/bg.jpg'),
 				logo: '/static/images/logo.png',
 				avatarList:['/static/images/avatar1.png','/static/images/avatar2.png','/static/images/avatar3.png'],
 				tips:'/static/images/tips.png',
@@ -78,6 +78,10 @@
 			this.$nextTick(()=>{
 				console.log(this.$refs.refScollView)
 			})
+			
+			
+			let coverImg = this.BGUrl
+			this.urlTobase64(coverImg);
 		},
 		 onPullDownRefresh() {
 		        //监听下拉刷新动作的执行方法，每次手动下拉刷新都会执行一次
@@ -90,6 +94,7 @@
 		    },
 
 		methods: {
+			
 			
 			// 获取屏幕高度
 			getClientHight() {

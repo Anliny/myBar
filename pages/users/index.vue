@@ -53,20 +53,17 @@
 		components: {uniSwiperDot},
 		data() {
 			return {
-				BGUrl: '/static/images/bg.jpg',
+				BGUrl: require('@/static/images/bg.jpg'),
 				info: userData,
 				tableList:tableList,
 				current: 0,
 				mode: 'round',
 			}
 		},
-		computed:{
-			userClass () {
-				console.log(user)
-				return user1
-			}
+		onLoad() {
+			let coverImg = this.BGUrl
+			this.urlTobase64(coverImg);
 		},
-		onLoad() {},
 		methods: {
 			change(e) {
 				this.current = e.detail.current;

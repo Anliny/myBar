@@ -47,14 +47,14 @@
 				],
 				current: 0,
 				mode: 'round',
-				BGUrl: '/static/images/bg.jpg',
+				BGUrl: require('@/static/images/bg.jpg'),
 				logo: '/static/images/logo.png',
 				avatarList:['/static/images/avatar1.png','/static/images/avatar2.png'],
 				tips:'/static/images/tips.png',
 				imgList: [
-					'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3687173686,831911132&fm=26&gp=0.jpg',
-					'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2601388974,2460884874&fm=26&gp=0.jpg',
-					'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2294966447,248611631&fm=26&gp=0.jpg'
+					require('@/static/images/swiperBG2.jpg'),
+					require('@/static/images/swiperBG1.png')
+					// 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2294966447,248611631&fm=26&gp=0.jpg'
 				],
 				chatList:[
 					{
@@ -65,11 +65,6 @@
 					},{
 						id:2,
 						tableNumber:'99',
-						userIcon:require('./images/user.png'),
-						text:'真好听',
-					},{
-						id:3,
-						tableNumber:'',
 						userIcon:require('./images/user.png'),
 						text:'真好听',
 					}

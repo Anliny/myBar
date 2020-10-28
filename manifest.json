@@ -76,11 +76,11 @@
         "enable" : false
     },
     "h5" : {
-        "title" : "test",
+        "title" : "myBar",
         "domain" : "www.baidu.com",
         "router" : {
             "mode" : "history",
-            "base" : "./"
+            "base" : ""
         },
         "template" : "index.html",
         "optimization" : {

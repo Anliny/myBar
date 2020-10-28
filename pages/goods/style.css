@@ -124,7 +124,7 @@
 		background-color: #74747f;
 		/* width: 196upx; */
 		line-height: 47upx;
-		
+		font-size: 28rpx;
 		margin: 6upx 0;
 		padding: 0rpx 20upx;
 		border-radius: 26upx;
@@ -141,6 +141,7 @@
 		height: 53upx;
 		background-color: #674892;
 		float: right;
+		font-size: 24rpx;
 		line-height: 53rpx;
 		border-radius: 26upx;
 		text-align: center;

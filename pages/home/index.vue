@@ -43,7 +43,7 @@
 			return {
 				goodsItemActive:null,
 				recharge:0,
-				BGUrl: '/static/images/bg.jpg',
+				BGUrl: require('@/static/images/bg.jpg'),
 				logo: '/static/images/logo.png',
 				avatarList:['/static/images/avatar1.png','/static/images/avatar2.png','/static/images/avatar3.png'],
 				tips:'/static/images/tips.png',
