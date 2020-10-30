@@ -23,13 +23,22 @@
 					<view class="chatView" style="">
 						<scroll-view ref="refScollView" :scroll-top="item.scrollTop" scroll-y="true" class="scroll-Y" @scrolltoupper="upper" @scrolltolower="lower"
 						                @scroll="scroll">
-							<view  v-for="item in item.chatList" :key="item.id" style="margin-bottom: 10upx;">
-								<view class="chatItem">
-									<view class="tableNumber" v-if="item.tableNumber">{{item.tableNumber}}</view>
-									<image class="userIcon" :src="item.userIcon" mode="scaleToFill"></image>
-									<view class="text">{{item.text}}</view>
+								<view  v-for="chat in item.chatList" :key="chat.id" style="margin-bottom: 10upx;">
+									<view class="chatItem" v-if="!chat.type">
+										<view class="tableNumber" v-if="chat.tableNumber">{{chat.tableNumber}}</view>
+										<image class="userIcon" :src="chat.userIcon" mode="scaleToFill"></image>
+										<view class="text">{{chat.text}}</view>
+									</view>
+									<view class="systemChatItem" v-else>
+										<view class="tableNumber" v-if="chat.tableNumber">{{chat.tableNumber}}</view>
+										<image class="userIcon" :src="chat.userIcon" mode="scaleToFill"></image>
+										<view class="text">{{chat.text}}</view>
+										<view class="goods">
+											<image class="goodsIcon" :src="chat.goodsIcon" mode="scaleToFill"></image>
+											<view class="number">x {{chat.goodsNumber}}</view>
+										</view>
+									</view>
 								</view>
-							</view>
 						 </scroll-view>
 					</view>
 				</view>
@@ -38,17 +47,46 @@
 					<view class="chatWapper">
 						<input type="text" class="chatInput" @focus="getIndex(index)" @blur="getChat" :value="item.inputValue" />
 						<view class="submit" @click="handleSubmit(index)">发送</view>
-						<image class="gave" src="./images/goodsBtn.png" @click="handleGoods" mode="scaleToFill"></image>
+						<image class="gave" src="./images/goodsBtn.png" @click="handleGoods(index)" mode="scaleToFill"></image>
 					</view>
 				</view>
 			</swiper-item>
 		</swiper>
+		<n-transition ref="pop" speed="ease-in-out" :height="500" :maskVal="0.5">
+			<view class="maskWapper">
+				<view class="goodsWapper" >
+					<view class="goodsItem" @click="handleGoodsItem(item)" v-for="item in bottomList" :key="item.id">
+						<view class="icon" :class="[item.id == goodsItemActive ? 'iconHover' : '']">
+							<image :src="item.icon" mode="scaleToFill"></image>
+						</view>
+						<view class="name">{{item.name}}</view>
+						<view class="price">{{item.price}}</view>
+					</view>
+				</view>
+				<view class="payment">
+					<view class="recharge">
+						{{recharge}}   充值＞
+					</view>
+					<view class="btnGroup" >
+						<view class="number" @click="handleConut">{{number}} ＞</view>
+						<view class="submit" @click="handleGive">送给他</view>
+					</view>
+				</view>
+			</view>
+		</n-transition>
+		<image class="fillImage" v-if="isShowFillImage"  :src="isShowFillImage ? 'https://atour-1300409046.cos.ap-shanghai.myqcloud.com/APNG/%E5%9B%9B%E5%8F%B6%E8%8D%89.png':''" mode="scaleToFill"></image>
+		
 	</view>
 </template>
 
 <script>
 import {userData} from "../users/mock.js"
+	import nTransition from "@/components/n-transition/n-transition.vue"
+	
 export default {
+	components:{
+		nTransition
+	},
 	data() {
 		return {
 			
@@ -59,6 +97,12 @@ export default {
 			info: [
 				111,222,333
 			],
+			
+			goodsItemActive:null,
+			recharge:0,
+			number:0,
+			isShowFillImage:false,
+			
 			current: 0,
 			index:null,
 			mode: 'round',
@@ -78,7 +122,16 @@ export default {
 							id:1,
 							tableNumber:'799',
 							userIcon:require('./images/user.png'),
-							text:"真好听",
+							text:'真好听你撒范德萨范德萨你懂撒范德萨范德萨发，是否你懂撒范德萨发生的三废士大夫的萨芬你撒范德萨发撒范德萨发',
+							type:0,
+						},{
+							id:2,
+							tableNumber:'799',
+							userIcon:require('./images/user.png'),
+							text:'系统消息',
+							goodsIcon:'/static/images/alcohol5.png',
+							goodsNumber:15,
+							type:1,
 						}
 					]
 				},{
@@ -90,7 +143,49 @@ export default {
 					chatList:[]
 				}
 			],
-			
+			bottomList:[
+				{
+					id:1,
+					icon: '/static/images/alcohol1.png',
+					name:'四叶草',
+					price: 60
+				},{
+					id:2,
+					icon: '/static/images/alcohol2.png',
+					name:'四叶草',
+					price: 123
+				},{
+					id:3,
+					icon: '/static/images/alcohol3.png',
+					name:'四叶草',
+					price: 76
+				},{
+					id:6,
+					icon: '/static/images/alcohol4.png',
+					name:'四叶草',
+					price: 79
+				},{
+					id:4,
+					icon: '/static/images/alcohol5.png',
+					name:'四叶草',
+					price: 80
+				},{
+					id:5,
+					icon: '/static/images/alcohol6.png',
+					name:'四叶草',
+					price: 123
+				},{
+					id:7,
+					icon: '/static/images/alcohol7.png',
+					name:'四叶草',
+					price: 45
+				},{
+					id:8,
+					icon: '/static/images/alcohol8.png',
+					name:'四叶草',
+					price: 79
+				}
+			]
 		}
 	},
 	onLoad() {},
@@ -99,6 +194,8 @@ export default {
 		goShare(){
 			uni.navigateTo({url:'../share/index'});
 		},
+		
+		
 		
 		upper: function(e) {
 			console.log(e)
@@ -113,6 +210,48 @@ export default {
 		
 		change(e) {
 			this.current = e.detail.current;
+		},
+		
+		// 点击商品
+		handleGoodsItem(data){
+			this.goodsItemActive = data.id
+			this.recharge = data.price
+			this.number = 1
+		},
+		handleConut(){
+			this.number ++
+		},
+		handleGoods(num){
+			this.$refs['pop'].show()
+			this.index = num
+			console.log(num)
+			// 跳转商品购买 (这种跳转方式在H5上只能用相对路径)
+			// uni.navigateTo({url:'../goods/index'});
+		},
+		// 赠送
+		handleGive(){
+			console.log(this.imgList[this.index].chatList)
+			this.imgList[this.index].chatList = [
+				...this.imgList[this.index].chatList,
+				{
+					id:this.imgList[this.index].chatList.length+1,
+					tableNumber:'799',
+					userIcon:require('./images/user.png'),
+					text:"内容由系统发出",
+					goodsIcon:'/static/images/alcohol5.png',
+					goodsNumber:this.number,
+					type:1
+				}
+			]
+			this.number = 0
+			this.$refs['pop'].hide()
+			this.$nextTick(()=>{
+				this.imgList[this.index].scrollTop = this.$refs.refScollView[this.index].$refs.content.offsetHeight
+				this.isShowFillImage = true
+				setTimeout(() =>{
+					this.isShowFillImage = false
+				},4000)
+			})
 		},
 		
 	

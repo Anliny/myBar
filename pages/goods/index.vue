@@ -111,10 +111,15 @@
 				},4000)
 			},
 			
+			handleConut(){
+				this.number ++
+			},
+			
 			// 点击商品
 			handleGoodsItem(data){
 				this.goodsItemActive = data.id
 				this.recharge = data.price
+				this.number = 1
 			},
 			//调用摄像头或选择文件上传
 			chooseImage() {

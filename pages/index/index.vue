@@ -24,11 +24,20 @@
 				<scroll-view ref="refScollView" :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scrolltoupper="upper" @scrolltolower="lower"
 				                @scroll="scroll">
 					<view  v-for="item in chatList" :key="item.id" style="margin-bottom: 10upx;">
-							<view class="chatItem">
-								<view class="tableNumber" v-if="item.tableNumber">{{item.tableNumber}}</view>
-								<image class="userIcon" :src="item.userIcon" mode="scaleToFill"></image>
-								<view class="text">{{item.text}}</view>
+						<view class="chatItem" v-if="!item.type">
+							<view class="tableNumber" v-if="item.tableNumber">{{item.tableNumber}}</view>
+							<image class="userIcon" :src="item.userIcon" mode="scaleToFill"></image>
+							<view class="text">{{item.text}}</view>
+						</view>
+						<view class="systemChatItem" v-else>
+							<view class="tableNumber" v-if="item.tableNumber">{{item.tableNumber}}</view>
+							<image class="userIcon" :src="item.userIcon" mode="scaleToFill"></image>
+							<view class="text">{{item.text}}</view>
+							<view class="goods">
+								<image class="goodsIcon" :src="item.goodsIcon" mode="scaleToFill"></image>
+								<view class="number">x {{item.goodsNumber}}</view>
 							</view>
+						</view>
 					</view>
 				 </scroll-view>
 			</view>
@@ -42,12 +51,41 @@
 				<image class="gave" src="./images/goodsBtn.png" @click="handleGoods" mode="scaleToFill"></image>
 			</view>
 		</view>
+		
+		<n-transition ref="pop" speed="ease-in-out" :height="500" :maskVal="0.5">
+			<view class="maskWapper">
+				<view class="goodsWapper" >
+					<view class="goodsItem" @click="handleGoodsItem(item)" v-for="item in bottomList" :key="item.id">
+						<view class="icon" :class="[item.id == goodsItemActive ? 'iconHover' : '']">
+							<image :src="item.icon" mode="scaleToFill"></image>
+						</view>
+						<view class="name">{{item.name}}</view>
+						<view class="price">{{item.price}}</view>
+					</view>
+				</view>
+				<view class="payment">
+					<view class="recharge">
+						{{recharge}}   充值＞
+					</view>
+					<view class="btnGroup" >
+						<view class="number" @click="handleConut">{{number}} ＞</view>
+						<view class="submit" @click="handleGive">送给他</view>
+					</view>
+				</view>
+			</view>
+		</n-transition>
+		<image class="fillImage" v-if="isShowFillImage"  :src="isShowFillImage ? 'https://atour-1300409046.cos.ap-shanghai.myqcloud.com/APNG/%E5%9B%9B%E5%8F%B6%E8%8D%89.png':''" mode="scaleToFill"></image>
+			
 			
 	</view>
 </template>
 
 <script>
+	import nTransition from "@/components/n-transition/n-transition.vue"
 	export default {
+		components:{
+			nTransition
+		},
 		data() {
 			return {
 				scrollTop:200,
@@ -55,18 +93,74 @@
 				old: {
 					scrollTop: 0
 				},
+				goodsItemActive:null,
+				recharge:0,
+				number:0,
+				isShowFillImage:false,
 				BGUrl: require('@/static/images/bg.jpg'),
 				logo: '/static/images/logo.png',
 				avatarList:['/static/images/avatar1.png','/static/images/avatar2.png','/static/images/avatar3.png'],
 				tips:'/static/images/tips.png',
 				inputValue:'',
 				chatList:[
-					/* {
+					{
 						id:1,
 						tableNumber:'799',
 						userIcon:require('./images/user.png'),
-						text:'真好听你撒范德萨范德萨你懂撒范德萨范德萨发，是否你懂撒范德萨发生的三废士大夫的萨芬你撒范德萨发撒范德萨发',
-					}*/
+						text:'真好听你撒范德萨',
+						type:0,
+					},{
+						id:2,
+						tableNumber:'799',
+						userIcon:require('./images/user.png'),
+						text:'系统消息',
+						goodsIcon:'/static/images/alcohol5.png',
+						goodsNumber:15,
+						type:1,
+					}
+				],
+				bottomList:[
+					{
+						id:1,
+						icon: '/static/images/alcohol1.png',
+						name:'四叶草',
+						price: 60
+					},{
+						id:2,
+						icon: '/static/images/alcohol2.png',
+						name:'四叶草',
+						price: 123
+					},{
+						id:3,
+						icon: '/static/images/alcohol3.png',
+						name:'四叶草',
+						price: 76
+					},{
+						id:6,
+						icon: '/static/images/alcohol4.png',
+						name:'四叶草',
+						price: 79
+					},{
+						id:4,
+						icon: '/static/images/alcohol5.png',
+						name:'四叶草',
+						price: 80
+					},{
+						id:5,
+						icon: '/static/images/alcohol6.png',
+						name:'四叶草',
+						price: 123
+					},{
+						id:7,
+						icon: '/static/images/alcohol7.png',
+						name:'四叶草',
+						price: 45
+					},{
+						id:8,
+						icon: '/static/images/alcohol8.png',
+						name:'四叶草',
+						price: 79
+					}
 				]
 			}
 		},
@@ -92,6 +186,41 @@
 
 		methods: {
 			
+			// 赠送
+			handleGive(){
+				this.chatList = [
+					...this.chatList,
+					{
+						id:this.chatList.length+1,
+						tableNumber:'799',
+						userIcon:require('./images/user.png'),
+						text:"内容由系统发出",
+						goodsIcon:'/static/images/alcohol5.png',
+						goodsNumber:this.number,
+						type:1
+					}
+				]
+				this.number = 0
+				this.$refs['pop'].hide()
+				this.$nextTick(()=>{
+					this.scrollTop = this.$refs.refScollView.$refs.content.offsetHeight
+					this.isShowFillImage = true
+					setTimeout(() =>{
+						this.isShowFillImage = false
+					},4000)
+				})
+			},
+			
+			handleConut(){
+				this.number ++
+			},
+			
+			// 点击商品
+			handleGoodsItem(data){
+				this.goodsItemActive = data.id
+				this.recharge = data.price
+				this.number = 1
+			},
 			
 			// 获取屏幕高度
 			getClientHight() {
@@ -136,6 +265,7 @@
 						tableNumber:'799',
 						userIcon:require('./images/user.png'),
 						text:this.inputValue,
+						type:0
 					}
 				]
 				this.inputValue = ""
@@ -144,11 +274,12 @@
 					this.scrollTop = this.$refs.refScollView.$refs.content.offsetHeight
 					// console.log(this.$refs.refScollView.$refs.content.offsetHeight)
 				})
-				
 			},
+			
 			handleGoods(){
+				this.$refs['pop'].show()
 				// 跳转商品购买 (这种跳转方式在H5上只能用相对路径)
-				uni.navigateTo({url:'../goods/index'});
+				// uni.navigateTo({url:'../goods/index'});
 			},
 			//调用摄像头或选择文件上传
 			chooseImage() {
