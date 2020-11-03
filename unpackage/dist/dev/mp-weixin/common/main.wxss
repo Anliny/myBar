@@ -1,0 +1,27 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*每个页面公共css */
+page{
+	height: 100%
+}
+.fontSize{
+	color: #007AFF;
+}
+/* @import url("./static/font.css"); */
+/* @import url("https://use.typekit.net/ngv0bfi.css") */
+/* <link rel="stylesheet" href="https://use.typekit.net/ngv0bfi.css"> */
+/* @import url("./static/font/iconfont.css"); */
+

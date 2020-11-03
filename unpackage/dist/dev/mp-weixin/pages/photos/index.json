@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "photos",
+  "usingComponents": {
+    "n-transition": "/components/n-transition/n-transition"
+  }
+}

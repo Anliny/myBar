@@ -52,7 +52,6 @@
 	.textWapper{
 		padding: 5px 20px;
 		margin-top: 76upx;
-		width: 437upx;
 		height: 139upx;
 		position: absolute;
 		top: 182upx;
@@ -68,6 +67,7 @@
 		line-height: 20px;
 		background-color: #5555ff;
 		transform: skewX(-25deg);
+		font-family: Acumin Variable Concept;
 	}
 	.textWapper .text{
 		font-size: 30px;

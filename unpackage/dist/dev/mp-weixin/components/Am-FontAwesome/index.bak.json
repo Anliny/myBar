@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "font-awesome": "/components/Am-FontAwesome/index"
+  }
+}

@@ -15,7 +15,8 @@
 <style>
 	/*每个页面公共css */
 	@import url("./static/style.css");
-	@import url("https://use.typekit.net/ngv0bfi.css")
+	/* @import url("./static/font.css"); */
+	/* @import url("https://use.typekit.net/ngv0bfi.css") */
 	/* <link rel="stylesheet" href="https://use.typekit.net/ngv0bfi.css"> */
 	/* @import url("./static/font/iconfont.css"); */
 </style>

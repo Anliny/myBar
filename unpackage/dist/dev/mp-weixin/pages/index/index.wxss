@@ -1,0 +1,713 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*每个页面公共css */
+.content {
+		height: 100%;
+		background-size:750rpx 100%;
+}
+.header{
+		height: 180rpx;
+		width: 100%;
+		background-color: rgba(102,102,102,.4);
+		border-radius: 90rpx;
+		padding: 10rpx;
+		box-sizing: border-box;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		position: absolute;
+}
+.logo{
+		height: 160rpx;
+		width: 160rpx;
+		border-radius: 50%;
+		/* background-color: #007AFF; */
+}
+.logo image{
+		width: 100%;
+		height: 100%;
+}
+.nameWapper{
+		-webkit-box-flex: 1;
+		-webkit-flex: 1;
+		        flex: 1;
+		height: 80rpx;
+		padding: 40rpx 0;
+}
+.nameWapper .title{
+		font-size: 16px;
+		color: #fff;
+}
+.nameWapper .number{
+		font-size: 12px;
+		color: #F1F1F1;
+}
+.avatar{
+		width: 279rpx;
+		height: 93rpx;
+		margin: 33.5rpx 0;		
+		margin-right: 20rpx;
+}
+.avatar .item{
+		width: 93rpx;
+		height: 93rpx;
+		border-radius: 50%;
+		float: right;
+		margin-right: -10rpx;
+}
+.avatar .item image{width: 100%;height: 100%;}
+.textWapper{
+		padding: 5px 20px;
+		margin-top: 76rpx;
+		height: 139rpx;
+		position: absolute;
+		top: 182rpx;
+		z-index: 5;
+}
+.textWapper image{width: 100%;height: 100%;}
+.textWapper .icon{
+		height: 20px;
+		color: rgb(74,154,126);
+		display: inline-block;
+		padding:0 20rpx;
+		text-align: center;
+		line-height: 20px;
+		background-color: #5555ff;
+		-webkit-transform: skewX(-25deg);
+		        transform: skewX(-25deg);
+		font-family: Acumin Variable Concept;
+}
+.textWapper .text{
+		font-size: 30px;
+		color: #fff;
+}
+.chatContanner{
+		padding: 20rpx;
+		box-sizing: border-box;
+		height: calc(100% - 386rpx);
+		padding-top:244rpx;
+		overflow-y:auto;
+}
+.chatContanner .chatView{
+		width: 100%;
+		/* height: calc(100% - 244upx); */
+		position: absolute;
+		bottom: 0;
+}
+.scroll-Y{
+		max-height: 560rpx;
+}
+.chatContanner .chatItem {
+		background-color: rgba(82,52,102,30%);
+		border-radius: 86.67rpx;
+		padding:0 20rpx;
+		margin-top: 20rpx;
+		display: -webkit-inline-box;
+		display: -webkit-inline-flex;
+		display: inline-flex;
+		word-wrap:break-word; 
+		word-break:break-all; 
+		-webkit-box-align: center; 
+		-webkit-align-items: center; 
+		        align-items: center;
+}
+.chatContanner .chatItem .tableNumber{
+		height: 67.33rpx;
+		min-width: 107rpx;
+		text-align: center;
+		border-radius: 67.33rpx;
+		background-color: rgba(73,14,56,0.78);
+		display: inline-block;
+		padding: 0 10rpx;
+		font-size: 28rpx;
+		font-weight: bolder;
+		line-height: 67.33rpx;
+		color: #bf72ac;
+		/* margin-top:10rpx; */
+		font-style: oblique;
+}
+.chatContanner .chatItem .userIcon {
+		height: 86.67rpx;
+		width: 86.67rpx;
+}
+.chatContanner .chatItem .text{
+		font-size: 28rpx;
+		font-weight: bolder;
+		color: #FFFFFF;
+		min-height: 30rpx;
+		line-height: 40rpx;
+		-webkit-box-flex:1;
+		-webkit-flex:1;
+		        flex:1;
+}
+.chatContanner .systemChatItem{
+		background: -webkit-linear-linear-gradient(90deg, rgba(78,116,179,.68), rgba(160,132,168,0.7));
+		background: -webkit-linear-gradient(left, rgba(78,116,179,.68), rgba(160,132,168,0.7));
+		background: linear-gradient(90deg, rgba(78,116,179,.68), rgba(160,132,168,0.7));
+		border-radius: 86.67rpx;
+		padding:0 20rpx;
+		margin-top: 20rpx;
+		display: -webkit-inline-box;
+		display: -webkit-inline-flex;
+		display: inline-flex;
+		word-wrap:break-word; 
+		word-break:break-all; 
+		-webkit-box-align: center; 
+		-webkit-align-items: center; 
+		        align-items: center;
+}
+.chatContanner .systemChatItem .tableNumber{
+		height: 67.33rpx;
+		min-width: 107rpx;
+		text-align: center;
+		border-radius: 67.33rpx;
+		background-color: rgba(73,14,56,0.78);
+		display: inline-block;
+		padding: 0 10rpx;
+		font-size: 28rpx;
+		font-weight: bolder;
+		line-height: 67.33rpx;
+		color: #bf72ac;
+		/* margin-top:10rpx; */
+		font-style: oblique;
+}
+.chatContanner .systemChatItem .userIcon {
+		height: 86.67rpx;
+		width: 86.67rpx;
+}
+.chatContanner .systemChatItem .text{
+		font-size: 28rpx;
+		font-weight: bolder;
+		color: #FFFFFF;
+		min-height: 30rpx;
+		line-height: 40rpx;
+		max-width: 288rpx;
+
+		/* flex:1; */
+}
+.chatContanner .systemChatItem .goods{
+		min-width: 100rpx;
+		height: 43rpx;
+		position: relative;
+}
+.chatContanner .systemChatItem .goods .goodsIcon{
+		width: 68rpx;
+		    height: 169rpx;
+		    position: absolute;
+		    bottom: -12px;
+		    left: 5px;
+			-webkit-transform: rotate(10deg);
+			        transform: rotate(10deg);
+}
+.chatContanner .systemChatItem .goods .number{
+		position: absolute;
+		display: block;
+		min-width: 200rpx;
+		top: -22rpx;
+		left: 80rpx;
+		color: rgb(110,186,58);
+		font-size: 60rpx;
+}
+.empetTop{
+		height: 182rpx;
+}
+.empetBottom{
+		height:204rpx;
+}
+.bottomWapper{
+		position: absolute;
+		bottom: 0;
+		height: 204rpx;
+		/* background-color: #55aaff; */
+		padding: 56rpx 40px;
+		width: 100%;
+		box-sizing: border-box;
+}
+.bottomWapper .line{
+		width:calc(100% - 40rpx);
+		left: 20rpx;
+		height: 2rpx;
+		background-color: rgba(220,221,211,0.5);
+		position: absolute;
+		top: 0;
+}
+.bottomWapper .chatWapper{
+		height: 74rpx;
+		width: 650rpx;
+		position: absolute;
+		left: 0;
+		right: 0;
+		margin: auto;
+		/* background-color: #00ffff; */
+		/* display: flex; */
+}
+.bottomWapper .chatWapper .chatInput{
+		width: 400rpx;
+		box-sizing: border-box;
+		height: 74rpx;
+		border-radius: 74rpx;
+		padding: 10rpx;
+		color: #fff;
+		background-color: rgba(255,255,255,.2);
+		float: left;
+}
+.bottomWapper .chatWapper .submit{
+		width: 120rpx;
+		height: 74rpx;
+		text-align: center;
+		float: right;
+		font-size: 28rpx;
+		background-color: #5555FF;
+		border-radius: 74rpx;
+		line-height: 74rpx;
+		color: #fff;
+}
+.bottomWapper .chatWapper .gave{
+		width: 74rpx;
+		height: 74rpx;
+		border-radius: 50%;
+		float: right;
+		margin-right: 10rpx;
+		background-color: #674892;
+}
+.maskWapper{
+		background-color: #1a1c1c;
+		padding: 20px;
+		width: 100%;
+		height: 649rpx;
+		position: fixed;
+		box-sizing: border-box;
+		bottom: 0;
+}
+.maskWapper .goodsWapper{
+		height: 465.2rpx;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-flex-wrap: wrap;
+		        flex-wrap: wrap;
+		-webkit-box-pack: justify;
+		-webkit-justify-content: space-between;
+		        justify-content: space-between;
+}
+.maskWapper .goodsWapper .goodsItem{
+		-webkit-box-flex: 1;
+		-webkit-flex: 1;
+		        flex: 1;
+		width: 25%;
+		min-width: 25%;
+		max-width: 25%;
+		text-align: center;
+}
+.maskWapper .goodsWapper .icon{
+		height: 156rpx;
+		width: 156rpx;
+		border-radius: 10rpx;
+		padding: 23rpx;
+		margin: auto;
+		box-sizing: border-box;
+}
+.maskWapper .goodsWapper .icon image{
+		width: 32rpx;
+		height: 110rpx;}
+.iconHover{
+		background-color: #47474d;
+}
+.maskWapper .goodsWapper .name{
+		color: #dedede;
+		font-size: 14px;
+		width: 156rpx;
+		text-align: center;
+}
+.maskWapper .goodsWapper .price{
+		color: #dedede;
+		font-size: 14px;
+		width: 156rpx;
+		text-align: center;
+}
+.payment{
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-webkit-flex-direction: row;
+		        flex-direction: row;
+		  -webkit-box-pack: justify;
+		  -webkit-justify-content: space-between;
+		          justify-content: space-between;
+		  margin-top: 20rpx;
+}
+.payment .recharge{
+		background-color: #74747f;
+		/* width: 196upx; */
+		line-height: 47rpx;
+		font-size: 28rpx;
+		margin: 6rpx 0;
+		padding: 0rpx 20rpx;
+		border-radius: 26rpx;
+		text-align: right;
+		box-sizing: border-box;
+		color: #fff;
+}
+.payment .recharge image{
+		width: 62rpx;
+		height: 21rpx;
+}
+.payment .btnGroup{
+		width: 260rpx;
+		height: 53rpx;
+		background-color: #674892;
+		float: right;
+		font-size: 24rpx;
+		line-height: 53rpx;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		border-radius: 26rpx;
+		text-align: center;
+		color: #fff;
+}
+.payment .btnGroup .number{
+		background-color: #74747f;
+		-webkit-box-flex: 1;
+		-webkit-flex: 1;
+		        flex: 1;
+		padding-left:30rpx;
+		text-align: center;
+	    border-radius: 53rpx 0 0 53rpx;
+}
+.payment .btnGroup .submit{
+		width: 144rpx;
+		border-radius: 0 53rpx 53rpx 0;
+		background-color: #674892;
+}
+.fillImage{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 9999;
+}
+
