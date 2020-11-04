@@ -19,16 +19,17 @@
 			<view class="text tk-acumin-pro">Current Songs</view>
 		</view>
 		<view class="bottles">
-			<image src="./images/bottles.png" mode="scaleToFill"></image>
+			<image :src="bottles" mode="scaleToFill"></image>
 		</view>
 		
 		<view class="table">
 			<view class="tableLeft">
 				<view class="tableItem" v-for="(table,index) in tableList.tableLeft" :key= "table.id">
+					<image class="tableBg" :src="tabelBg" mode="scaleToFill"></image>
 					<image 
 						v-for="(user,index) in table.users" 
 						:key="user.id" 
-						:style="{transform: `rotateZ(${(360/table.users.length)*index}deg) translateY(80px)`}"
+						:style="{transform: `rotateZ(${(360/table.users.length)*index}deg) translateY(150rpx)`}"
 						:class="{shadow:user.isShadow,zIndex:user.isShadow}" 
 						class="user" 
 						:src="user.userUrl" 
@@ -55,6 +56,8 @@
 		data() {
 			return {
 				BGUrl: require('@/static/images/bg.jpg'),
+				tabelBg: require('@/static/images/tableBG.png'),
+				bottles:require('./images/bottles.png'),
 				info: userData,
 				tableList:tableList,
 				current: 0,

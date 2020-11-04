@@ -538,7 +538,7 @@
 		position: absolute;
 		bottom: 0;
 		height: 204rpx;
-		/* background-color: #55aaff; */
+		    background-color: #0d0a0f;
 		padding: 56rpx 40px;
 		width: 100%;
 		box-sizing: border-box;

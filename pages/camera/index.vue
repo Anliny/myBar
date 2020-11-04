@@ -1,11 +1,11 @@
 <template>
 	<view class="content" style="background-color: #000000">
-		<image class="contentCamera" src="./images/cameraIcon.png" mode="scaleToFill"></image>
+		<image class="contentCamera" :src="cameraIcon" mode="scaleToFill"></image>
 		<view class="textWapper">
 			<view class="icon">Live</view>
 			<view class="text tk-acumin-pro">Current Songs</view>
 		</view>
-		<image class="down" src="./images/down.png" mode="scaleToFill"></image>
+		<image class="down" :src="downIcon" mode="scaleToFill"></image>
 		<view class="cameraBtn" @click="handleGoPhotos">
 			<view class="article"></view>
 		</view>
@@ -15,7 +15,10 @@
 <script>
 	export default {
 		data() {
-			return {}
+			return {
+				cameraIcon:require("./images/cameraIcon.png"),
+				downIcon:require('./images/down.png')
+			}
 		},
 		onLoad() {},
 		methods: {
@@ -44,12 +47,10 @@
 	}
 	.textWapper{
 		padding: 5px 20px;
-		width: 437rpx;
 		height: 208rpx;
 		position: absolute;
 		top: 346rpx;
 		left: 31rpx;
-		
 	}
 	.textWapper image{
 		width: 100%;

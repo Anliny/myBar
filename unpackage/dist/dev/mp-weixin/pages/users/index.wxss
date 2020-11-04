@@ -86,27 +86,33 @@ page,.content{
 }
 .table{
 	position: absolute;
-	height: 515rpx;
+	height: 470rpx;
 	width: 100%;
 	bottom: 0;
 }
 .table .tableLeft{
 	width: 490rpx;
-	height: 515rpx;
+	height: 470rpx;
 	overflow-y: auto;
 	float: left;
 }
 .table .tableLeft .tableItem{
-	width: 480rpx;
-	height: 460rpx;
+	width: 440rpx;
+	height: 430rpx;
 	border-radius: 140rpx;
 	background-color: rgb(191 114 172 / 30%);
 	margin-bottom: 10rpx;
-	background-image: url(/pages/users/images/tableBG.png);
-	background-size: 318rpx 318rpx;
-	background-repeat: no-repeat;
-	background-position: center;
 	position: relative;
+}
+.table .tableLeft .tableItem .tableBg{
+	position: absolute;
+	width: 318rpx;
+	height: 318rpx;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
 }
 .table .tableLeft .tableItem .user{
 	width: 120rpx;
@@ -176,8 +182,7 @@ page,.content{
 }
 .textWapper{
 	padding: 5px 20px;
-	margin-top: 76rpx;
-	width: 437rpx;
+	margin-top: 50rpx;
 	height: 139rpx;
 	/* position: absolute;
  */
@@ -200,11 +205,12 @@ page,.content{
 	color: #fff;
 }
 .bottles{
-	width: 200rpx;
-	height: 280rpx;
+	width: 180rpx;
+	height: 240rpx;
 	position: absolute;
-	top:33vh;
+	top:38vh;
 	right: 60rpx;
+	z-index: 0;
 }
 .bottles image{
 	width: 100%;

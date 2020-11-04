@@ -2,7 +2,7 @@
 	<view class="content" :style="{background:`url(${BGUrl})`}" style="background-size: 750upx;">
 		<view class="header">
 			<view class="goBack" @click="handleGoBack">
-				<image class="icon" src="./images/left.png" mode="scaleToFill"></image>
+				<image class="icon" :src="leftIcon" mode="scaleToFill"></image>
 				回现场
 			</view>
 			
@@ -23,19 +23,21 @@
 					<view class="chatView" style="">
 						<scroll-view ref="refScollView" :scroll-top="item.scrollTop" scroll-y="true" class="scroll-Y" @scrolltoupper="upper" @scrolltolower="lower"
 						                @scroll="scroll">
-								<view  v-for="chat in item.chatList" :key="chat.id" style="margin-bottom: 10upx;">
-									<view class="chatItem" v-if="!chat.type">
-										<view class="tableNumber" v-if="chat.tableNumber">{{chat.tableNumber}}</view>
-										<image class="userIcon" :src="chat.userIcon" mode="scaleToFill"></image>
-										<view class="text">{{chat.text}}</view>
-									</view>
-									<view class="systemChatItem" v-else>
-										<view class="tableNumber" v-if="chat.tableNumber">{{chat.tableNumber}}</view>
-										<image class="userIcon" :src="chat.userIcon" mode="scaleToFill"></image>
-										<view class="text">{{chat.text}}</view>
-										<view class="goods">
-											<image class="goodsIcon" :src="chat.goodsIcon" mode="scaleToFill"></image>
-											<view class="number">x {{chat.goodsNumber}}</view>
+								<view :id="`content${index}`">
+									<view  v-for="chat in item.chatList" :key="chat.id" style="margin-bottom: 10upx;">
+										<view class="chatItem" v-if="!chat.type">
+											<view class="tableNumber" v-if="chat.tableNumber">{{chat.tableNumber}}</view>
+											<image class="userIcon" :src="chat.userIcon" mode="scaleToFill"></image>
+											<view class="text">{{chat.text}}</view>
+										</view>
+										<view class="systemChatItem" v-else>
+											<view class="tableNumber" v-if="chat.tableNumber">{{chat.tableNumber}}</view>
+											<image class="userIcon" :src="chat.userIcon" mode="scaleToFill"></image>
+											<view class="text">{{chat.text}}</view>
+											<view class="goods">
+												<image class="goodsIcon" :src="chat.goodsIcon" mode="scaleToFill"></image>
+												<view class="number">x {{chat.goodsNumber}}</view>
+											</view>
 										</view>
 									</view>
 								</view>
@@ -47,22 +49,28 @@
 					<view class="chatWapper">
 						<input type="text" class="chatInput" @focus="getIndex(index)" @blur="getChat" :value="item.inputValue" />
 						<view class="submit" @click="handleSubmit(index)">发送</view>
-						<image class="gave" src="./images/goodsBtn.png" @click="handleGoods(index)" mode="scaleToFill"></image>
+						<image class="gave" :src="goodsBtnIcon" @click="handleGoods(index)" mode="scaleToFill"></image>
 					</view>
 				</view>
 			</swiper-item>
 		</swiper>
 		<n-transition ref="pop" speed="ease-in-out" :height="500" :maskVal="0.5">
 			<view class="maskWapper">
-				<view class="goodsWapper" >
-					<view class="goodsItem" @click="handleGoodsItem(item)" v-for="item in bottomList" :key="item.id">
-						<view class="icon" :class="[item.id == goodsItemActive ? 'iconHover' : '']">
-							<image :src="item.icon" mode="scaleToFill"></image>
+				<scroll-view :scroll-top="goodsScrollTop" scroll-y="true" class="scroll-Y" @scrolltoupper="upper" @scrolltolower="lower"
+				    @scroll="scroll">
+					
+						<view class="goodsWapper" >
+							<view class="goodsItem" @click="handleGoodsItem(item)" v-for="item in bottomList" :key="item.id">
+								<view class="icon" :class="[item.id == goodsItemActive ? 'iconHover' : '']">
+									<image :src="item.icon" mode="scaleToFill"></image>
+								</view>
+								<view class="name">{{item.name}}</view>
+								<view class="price">{{item.price}}</view>
+							</view>
 						</view>
-						<view class="name">{{item.name}}</view>
-						<view class="price">{{item.price}}</view>
-					</view>
-				</view>
+					
+				</scroll-view>
+				
 				<view class="payment">
 					<view class="recharge">
 						{{recharge}}   充值＞
@@ -89,7 +97,9 @@ export default {
 	},
 	data() {
 		return {
-			
+			leftIcon:require("./images/left.png"),
+			goodsBtnIcon:require("./images/goodsBtn.png"),
+			goodsScrollTop:0,
 			recharge:0,
 			old: {
 				scrollTop: 0
@@ -246,7 +256,19 @@ export default {
 			this.number = 0
 			this.$refs['pop'].hide()
 			this.$nextTick(()=>{
-				this.imgList[this.index].scrollTop = this.$refs.refScollView[this.index].$refs.content.offsetHeight
+				// this.imgList[this.index].scrollTop = this.$refs.refScollView[this.index].$refs.content.offsetHeight
+				
+				// 注意：想要拿到元素实例，需要在实例已经挂载到页面上才可以
+				// const query = uni.createSelectorQuery().in(this);
+				// query.select(`#content${this.index}`).boundingClientRect(data => {
+				// 	this.scrollTop = data.height
+				// }).exec();
+				
+				// 注意：想要拿到元素实例，需要在实例已经挂载到页面上才可以
+				const query = uni.createSelectorQuery().in(this);
+				query.select('#content').boundingClientRect(data => {
+					this.scrollTop = data.height
+				}).exec();
 				this.isShowFillImage = true
 				setTimeout(() =>{
 					this.isShowFillImage = false
@@ -279,7 +301,7 @@ export default {
 			this.imgList[number].inputValue = ""
 			this.index = null
 			this.$nextTick(()=>{
-				console.log(this.$refs.refScollView[number].$refs.content.offsetHeight)
+				
 				this.imgList[number].scrollTop = this.$refs.refScollView[number].$refs.content.offsetHeight
 			})
 		},
