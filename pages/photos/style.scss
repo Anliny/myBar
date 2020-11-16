@@ -387,3 +387,14 @@
 		height: 100%;
 		z-index: 9999;
 	}
+
+.mediaWapper{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+.mediaWapper video,.mediaWapper image{
+	width: 100%;
+	height: 100%;
+}

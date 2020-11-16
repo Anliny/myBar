@@ -1,46 +1,6 @@
 <template>
 	<view class="content" :style="{background:`url(${BGUrl})`}" style="background-size: 750upx;">
-		<view class="header">
-			<view class="logo">
-				<image :src="logo"   mode="scaleToFill"></image>
-			</view>
-			<view class="nameWapper">
-				<view class="title">上海双人舞酒吧</view>
-				<view class="number">当晚人数：769</view>
-			</view>
-			<view class="avatar">
-				<view class="item" v-for="(item,index) in avatarList" :key="index">
-					<image :src="item" mode="scaleToFill"></image>
-				</view>
-			</view>
-		</view>
-		<view class="textWapper">
-			<view class="icon">Live</view>
-			<view class="text tk-acumin-pro">Current Songs</view>
-			<!-- <image :src="tips" mode="scaleToFill"></image> -->
-		</view>
-		<view class="bottomWapper">
-			<view class="goodsWapper" >
-				<view class="goodsItem" @click="handleGoodsItem(item)" v-for="item in bottomList" :key="item.id">
-					<view class="icon" :class="[item.id == goodsItemActive ? 'iconHover' : '']">
-						<image :src="item.icon" mode="scaleToFill"></image>
-					</view>
-					<view class="name">{{item.name}}</view>
-					<view class="price">{{item.price}}</view>
-				</view>
-			</view>
-			<view class="payment">
-				<view class="recharge">
-					{{recharge}}   充值＞
-				</view>
-				<view class="btnGroup" >
-					<view class="number" @click="handleConut">{{number}} ＞</view>
-					<view class="submit" @click="handleSubmit">送给他</view>
-				</view>
-			</view>
-		</view>
-		<image class="fillImage" v-if="isShowFillImage"  :src="isShowFillImage ? 'https://atour-1300409046.cos.ap-shanghai.myqcloud.com/APNG/%E5%9B%9B%E5%8F%B6%E8%8D%89.png':''" mode="scaleToFill"></image>
-	
+		
 	</view>
 </template>
 

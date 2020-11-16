@@ -14,7 +14,15 @@
 		</view>
 		
 		<swiper :loop="false" class="imageContainer" previous-margin="45rpx" next-margin="45rpx" >
-			<swiper-item class="swiperitem" :style="{backgroundImage:'url('+item.bgUrl+')'}" v-for="(item,index) in imgList" :key="index">
+			<swiper-item class="swiperitem" v-for="(item,index) in imgList" :key="index">
+				<view class="mediaWapper" v-if="item.mediaType">
+					<video id="myVideo" 
+					src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" @error="videoErrorCallback" :autoplay="true" loop></video>
+				</view>
+				<view class="mediaWapper" v-else>
+					<image :src="item.mediaUrl" mode="scaleToFill"></image>
+				</view>
+				
 				<view class="textWapper">
 					<view class="icon">{{item.song.icon}}</view>
 					<view class="text tk-acumin-pro">{{item.song.name}}</view>
@@ -58,7 +66,6 @@
 			<view class="maskWapper">
 				<scroll-view :scroll-top="goodsScrollTop" scroll-y="true" class="scroll-Y" @scrolltoupper="upper" @scrolltolower="lower"
 				    @scroll="scroll">
-					
 						<view class="goodsWapper" >
 							<view class="goodsItem" @click="handleGoodsItem(item)" v-for="item in bottomList" :key="item.id">
 								<view class="icon" :class="[item.id == goodsItemActive ? 'iconHover' : '']">
@@ -68,9 +75,7 @@
 								<view class="price">{{item.price}}</view>
 							</view>
 						</view>
-					
 				</scroll-view>
-				
 				<view class="payment">
 					<view class="recharge">
 						{{recharge}}   充值＞
@@ -123,6 +128,8 @@ export default {
 			imgList: [
 				{
 					bgUrl:require('@/static/images/swiperBG2.jpg'),
+					mediaUrl:require('@/static/images/movie.mp4'),
+					mediaType:1, //1是视频，0是图片
 					scrollTop:0,
 					id:1,
 					inputValue:'',
@@ -146,6 +153,8 @@ export default {
 					]
 				},{
 					bgUrl:require('@/static/images/swiperBG1.png'),
+					mediaUrl:require('@/static/images/swiperBG1.png'),
+					mediaType:0, //1是视频，0是图片
 					scrollTop:0,
 					song:{icon:'LIVE',name:'Current Songs'},
 					id:1,
@@ -200,13 +209,18 @@ export default {
 	},
 	onLoad() {},
 	methods: {
+		// 视频播放错误
+		videoErrorCallback: function(e) {
+			console.log(e)
+			uni.showModal({
+				content: e.target.errMsg,
+				showCancel: false
+			})
+		},
 		// 去分享
 		goShare(){
 			uni.navigateTo({url:'../share/index'});
 		},
-		
-		
-		
 		upper: function(e) {
 			console.log(e)
 		},
@@ -256,18 +270,10 @@ export default {
 			this.number = 0
 			this.$refs['pop'].hide()
 			this.$nextTick(()=>{
-				// this.imgList[this.index].scrollTop = this.$refs.refScollView[this.index].$refs.content.offsetHeight
-				
-				// 注意：想要拿到元素实例，需要在实例已经挂载到页面上才可以
-				// const query = uni.createSelectorQuery().in(this);
-				// query.select(`#content${this.index}`).boundingClientRect(data => {
-				// 	this.scrollTop = data.height
-				// }).exec();
-				
 				// 注意：想要拿到元素实例，需要在实例已经挂载到页面上才可以
 				const query = uni.createSelectorQuery().in(this);
-				query.select('#content').boundingClientRect(data => {
-					this.scrollTop = data.height
+				query.select('#content'+ this.index).boundingClientRect(data => {
+					this.imgList[this.index].scrollTop = data.height
 				}).exec();
 				this.isShowFillImage = true
 				setTimeout(() =>{
@@ -302,7 +308,12 @@ export default {
 			this.index = null
 			this.$nextTick(()=>{
 				
-				this.imgList[number].scrollTop = this.$refs.refScollView[number].$refs.content.offsetHeight
+				const query = uni.createSelectorQuery().in(this);
+				query.select('#content'+ number).boundingClientRect(data => {
+					console.log(data)
+					this.imgList[number].scrollTop = data.height
+				}).exec();
+				
 			})
 		},
 		// 返回聊天页面

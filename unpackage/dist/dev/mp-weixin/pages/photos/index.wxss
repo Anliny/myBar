@@ -314,6 +314,17 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 /*每个页面公共css */
 .content {
 		height: 100%;
@@ -733,6 +744,16 @@
 		width: 100%;
 		height: 100%;
 		z-index: 9999;
+}
+.mediaWapper{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+.mediaWapper video,.mediaWapper image{
+	width: 100%;
+	height: 100%;
 }
 .swiper-box1 .uni-swiper-slide-frame{
 	width: 84% !important;
